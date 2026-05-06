@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
@@ -33,16 +33,16 @@
     <section class="container">
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">15</div>
+                <div class="stat-value" id="public-repos">15</div>
                 <div class="stat-label">Public Repositories</div>
             </div>
             <div class="stat">
-                <div class="stat-value">34</div>
+                <div class="stat-value" id="total-stars">34</div>
                 <div class="stat-label">Total Stars</div>
             </div>
             <div class="stat">
-                <div class="stat-value">Cuba</div>
-                <div class="stat-label">Location</div>
+                <div class="stat-value" id="total-forks">13</div>
+                <div class="stat-label">Total Forks</div>
             </div>
         </div>
     </section>
@@ -95,25 +95,25 @@
                     <a href="https://userzero075.github.io/devfast-manager-web/" target="_blank" class="project-link"></a>
                     <div class="project-name">DevFast Manager</div>
                     <div class="project-desc">Open-source business management platform for small teams: projects, infrastructure, finances, team, tasks, bugs, internal chat, reports and company settings. Backend Node.js/Fastify/Prisma and frontend React/Tailwind.</div>
-                    <div class="project-stars">⭐ 24 stars • 12 forks • <a href="https://github.com/UserZero075/Business-Management-Dashboard" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/devfast-manager-web/" target="_blank">Website</a></div>
+                    <div class="project-stars" data-repo="Business-Management-Dashboard">⭐ <span data-stars>24</span> stars • <span data-forks>12</span> forks • <a href="https://github.com/UserZero075/Business-Management-Dashboard" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/devfast-manager-web/" target="_blank">Website</a></div>
                 </div>
                 <div class="project">
                     <a href="https://userzero075.github.io/zerogramjs-web/" target="_blank" class="project-link"></a>
                     <div class="project-name">ZerogramJS</div>
                     <div class="project-desc">Modern Node.js library for building Telegram bots. Features: sessions, command routing, inline buttons, file uploads up to 2GB via API, middleware integration. NPM published.</div>
-                    <div class="project-stars">⭐ 2 stars • <a href="https://github.com/UserZero075/ZerogramJS" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/zerogramjs-web/" target="_blank">Website</a> • <a href="https://www.npmjs.com/package/zerogramjs" target="_blank">npm</a></div>
+                    <div class="project-stars" data-repo="ZerogramJS">⭐ <span data-stars>2</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/ZerogramJS" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/zerogramjs-web/" target="_blank">Website</a> • <a href="https://www.npmjs.com/package/zerogramjs" target="_blank">npm</a></div>
                 </div>
                 <div class="project">
                     <a href="https://github.com/UserZero075/DownFast" target="_blank" class="project-link"></a>
                     <div class="project-name">DownFast</div>
                     <div class="project-desc">Downloader for DevFast service. Allows free downloads using ETECSA providers, saving data packages.</div>
-                    <div class="project-stars">⭐ 4 stars • <a href="https://github.com/UserZero075/DownFast" target="_blank">GitHub</a></div>
+                    <div class="project-stars" data-repo="DownFast">⭐ <span data-stars>4</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/DownFast" target="_blank">GitHub</a></div>
                 </div>
                 <div class="project">
                     <a href="https://github.com/UserZero075/SpawnSpace" target="_blank" class="project-link"></a>
                     <div class="project-name">SpawnSpace</div>
                     <div class="project-desc">Tool to increase Linux shared partition space. Creates LVM partitions and mounts them to expand storage.</div>
-                    <div class="project-stars">⭐ 3 stars • 1 fork</div>
+                    <div class="project-stars" data-repo="SpawnSpace">⭐ <span data-stars>3</span> stars • <span data-forks>1</span> forks</div>
                 </div>
             </div>
         </div>
@@ -278,6 +278,29 @@
                 alias: "También conocido como: UserZero075, User0075, User0075_69"
             }
         };
+
+        async function loadGitHubPortfolioStats() {
+            try {
+                const res = await fetch('https://api.github.com/users/UserZero075/repos?per_page=100&type=owner&sort=updated', { headers: { Accept: 'application/vnd.github+json' }, cache: 'no-store' });
+                if (!res.ok) return;
+                const repos = await res.json();
+                const map = new Map(repos.map(r => [r.name, r]));
+                const totalStars = repos.reduce((n, r) => n + (r.stargazers_count || 0), 0);
+                const totalForks = repos.reduce((n, r) => n + (r.forks_count || 0), 0);
+                const publicRepos = repos.length;
+                document.getElementById('public-repos').textContent = publicRepos;
+                document.getElementById('total-stars').textContent = totalStars;
+                document.getElementById('total-forks').textContent = totalForks;
+                document.querySelectorAll('[data-repo]').forEach(card => {
+                    const repo = map.get(card.dataset.repo);
+                    if (!repo) return;
+                    const stars = card.querySelector('[data-stars]');
+                    const forks = card.querySelector('[data-forks]');
+                    if (stars) stars.textContent = repo.stargazers_count ?? stars.textContent;
+                    if (forks) forks.textContent = repo.forks_count ?? forks.textContent;
+                });
+            } catch (e) {}
+        }
         function initI18n() {
             let l = localStorage.getItem('portfolio_lang') || 'en';
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
@@ -287,6 +310,7 @@
             let l = b.dataset.lang; localStorage.setItem('portfolio_lang', l); initI18n();
         }));
         initI18n();
+        loadGitHubPortfolioStats();
     </script>
 </body>
 
