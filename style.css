@@ -437,6 +437,10 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.service-links {
+    color: var(--primary);
+}
+
 .featured-project .project-preview {
     height: 180px;
 }
