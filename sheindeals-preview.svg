@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">SheinDeals Cuba preview</title>
+  <desc id="desc">Editorial clothing catalog and SHEIN order service for Cuba.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151313"/>
+      <stop offset="1" stop-color="#2b2522"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8b27a"/>
+      <stop offset="1" stop-color="#f0d09a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <path d="M760 0h440v800H910c35-142 8-260-78-354-93-101-111-245-72-446Z" fill="#40352d" opacity=".55"/>
+  <path d="M0 690c190-80 335-70 470 14 112 70 230 83 367 29 123-49 245-57 363-16v83H0Z" fill="#0d0c0c" opacity=".7"/>
+  <text x="72" y="92" fill="#d8b27a" font-family="Arial, sans-serif" font-size="24" letter-spacing="8">SHEINDEALS / CUBA</text>
+  <text x="72" y="205" fill="#f5f1eb" font-family="Georgia, serif" font-size="72">Vestir con estilo.</text>
+  <text x="72" y="285" fill="#f5f1eb" font-family="Georgia, serif" font-size="72">Pagar menos.</text>
+  <rect x="76" y="342" width="92" height="3" fill="url(#gold)"/>
+  <text x="72" y="405" fill="#c9c1b9" font-family="Arial, sans-serif" font-size="28">Catálogo curado · Encargos SHEIN</text>
+  <text x="72" y="450" fill="#c9c1b9" font-family="Arial, sans-serif" font-size="28">Entregas para toda Cuba</text>
+  <rect x="72" y="540" width="330" height="68" rx="4" fill="#d8b27a"/>
+  <text x="108" y="584" fill="#171313" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="2">EXPLORAR CATÁLOGO</text>
+  <text x="72" y="730" fill="#8d8883" font-family="monospace" font-size="20">PROYECTO PARA CLIENTE · SHOP.SHEINDEALSCUBA.COM</text>
+</svg>
