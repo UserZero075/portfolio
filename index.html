@@ -71,6 +71,35 @@
             border-color: #888;
             transform: translateY(-1px);
         }
+        .project-stars {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            align-items: center;
+        }
+        .stat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            transition: all 0.2s ease;
+        }
+        .stat-badge:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .stat-badge.stars {
+            color: #f0c040;
+        }
+        .stat-badge.forks {
+            color: #8ab4f8;
+        }
     </style>
 </head>
 
@@ -157,7 +186,7 @@
                     <div class="project-name">DevFast Manager</div>
                     <div class="project-desc">Business management platform for small and mid-sized digital companies: projects, infrastructure, finances, team, tasks, bugs, internal chat, reports and company settings. Backend Node.js/Fastify/Prisma and frontend React/Tailwind.</div>
                     <div class="project-actions"><a href="https://github.com/UserZero075/Business-Management-Dashboard" target="_blank" class="btn btn-github">GitHub</a><a href="https://userzero075.github.io/devfast-manager-web/" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/devfast-manager.html" class="btn btn-details">Detalles</a></div>
-                    <div class="project-stars" data-repo="Business-Management-Dashboard">⭐ <span data-stars>24</span> stars • <span data-forks>12</span> forks • <a href="https://github.com/UserZero075/Business-Management-Dashboard" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/devfast-manager-web/" target="_blank">Website</a></div>
+                    <div class="project-stars" data-repo="Business-Management-Dashboard"><span class="stat-badge stars">⭐ <span data-stars>24</span></span><span class="stat-badge forks">🍴 <span data-forks>12</span></span></div>
                 </div>
                 <div class="project">
                     <a href="https://userzero075.github.io/zerogramjs-web/" target="_blank" class="project-link"></a>
@@ -165,7 +194,7 @@
                     <div class="project-name">ZerogramJS</div>
                     <div class="project-desc">Modern Node.js library for building Telegram bots. Sessions, command routing, inline buttons, middleware and high-capacity file handling.</div>
                     <div class="project-actions"><a href="https://github.com/UserZero075/ZerogramJS" target="_blank" class="btn btn-github">GitHub</a><a href="https://userzero075.github.io/zerogramjs-web/" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/zerogramjs.html" class="btn btn-details">Detalles</a></div>
-                    <div class="project-stars" data-repo="ZerogramJS">⭐ <span data-stars>2</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/ZerogramJS" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/zerogramjs-web/" target="_blank">Website</a> • <a href="https://www.npmjs.com/package/zerogramjs" target="_blank">npm</a></div>
+                    <div class="project-stars" data-repo="ZerogramJS"><span class="stat-badge stars">⭐ <span data-stars>2</span></span><span class="stat-badge forks">🍴 <span data-forks>0</span></span></div>
                 </div>
                 <div class="project">
                     <a href="https://github.com/UserZero075/File2LinkZeroJS" target="_blank" class="project-link"></a>
@@ -173,7 +202,7 @@
                     <div class="project-name">File2LinkZeroJS</div>
                     <div class="project-desc">Telegram file-to-link bot powered by ZerogramJS (MTProto) and JsonFlux. Forward any file, get download/watch/share links. Single-page WebApp with admin panel, moderation, i18n, quotas and live updates via Socket.IO. No 50MB limit, no external database.</div>
                     <div class="project-actions"><a href="https://github.com/UserZero075/File2LinkZeroJS" target="_blank" class="btn btn-github">GitHub</a><a href="https://github.com/UserZero075/File2LinkZeroJS/releases/tag/v0.1.0" target="_blank" class="btn btn-page">Release</a><a href="/portfolio/p/file2linkzerojs.html" class="btn btn-details">Detalles</a></div>
-                    <div class="project-stars" data-repo="File2LinkZeroJS">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/File2LinkZeroJS" target="_blank">GitHub</a> • <a href="https://github.com/UserZero075/File2LinkZeroJS/releases/tag/v0.1.0" target="_blank">Release</a></div>
+                    <div class="project-stars" data-repo="File2LinkZeroJS"><span class="stat-badge stars">⭐ <span data-stars>0</span></span><span class="stat-badge forks">🍴 <span data-forks>0</span></span></div>
                 </div>
                 <div class="project">
                     <a href="https://github.com/UserZero075/webconsole" target="_blank" class="project-link"></a>
@@ -181,7 +210,7 @@
                     <div class="project-name">WebConsole</div>
                     <div class="project-desc">Tailscale-only web terminal with real PTY, xterm.js, binary/zlib low-bandwidth transport and local input buffering for instant typing on weak mobile links.</div>
                     <div class="project-actions"><a href="https://github.com/UserZero075/webconsole" target="_blank" class="btn btn-github">GitHub</a><a href="https://github.com/UserZero075/webconsole/releases/tag/v1.0.0" target="_blank" class="btn btn-page">Release</a><a href="/portfolio/p/webconsole.html" class="btn btn-details">Detalles</a></div>
-                    <div class="project-stars" data-repo="webconsole">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/webconsole" target="_blank">GitHub</a> • <a href="https://github.com/UserZero075/webconsole/releases/tag/v1.0.0" target="_blank">Release</a></div>
+                    <div class="project-stars" data-repo="webconsole"><span class="stat-badge stars">⭐ <span data-stars>0</span></span><span class="stat-badge forks">🍴 <span data-forks>0</span></span></div>
                 </div>
                 <div class="project">
                     <a href="https://github.com/UserZero075/JsonFlux" target="_blank" class="project-link"></a>
@@ -189,7 +218,7 @@
                     <div class="project-name">JsonFlux</div>
                     <div class="project-desc">Project focused on structured JSON/data flow tooling. I added a temporary generic preview until I prepare a better visual identity.</div>
                     <div class="project-actions"><a href="https://github.com/UserZero075/JsonFlux" target="_blank" class="btn btn-github">GitHub</a><a href="/portfolio/p/jsonflux.html" class="btn btn-details">Detalles</a></div>
-                    <div class="project-stars" data-repo="JsonFlux">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/JsonFlux" target="_blank">GitHub</a></div>
+                    <div class="project-stars" data-repo="JsonFlux"><span class="stat-badge stars">⭐ <span data-stars>0</span></span><span class="stat-badge forks">🍴 <span data-forks>0</span></span></div>
                 </div>
                 <div class="project">
                     <a href="https://github.com/UserZero075/SpawnSpace" target="_blank" class="project-link"></a>
@@ -197,7 +226,7 @@
                     <div class="project-name">SpawnSpace</div>
                     <div class="project-desc">Linux storage expansion script. Creates and mounts LVM-based storage to increase usable shared space.</div>
                     <div class="project-actions"><a href="https://github.com/UserZero075/SpawnSpace" target="_blank" class="btn btn-github">GitHub</a><a href="/portfolio/p/spawnspace.html" class="btn btn-details">Detalles</a></div>
-                    <div class="project-stars" data-repo="SpawnSpace">⭐ <span data-stars>3</span> stars • <span data-forks>1</span> forks</div>
+                    <div class="project-stars" data-repo="SpawnSpace"><span class="stat-badge stars">⭐ <span data-stars>3</span></span><span class="stat-badge forks">🍴 <span data-forks>1</span></span></div>
                 </div>
             </div>
         </div>
@@ -213,7 +242,7 @@
                     <div class="project-name">CC Checker Analysis</div>
                     <div class="project-desc" data-i18n="ccCheckerDesc">Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.</div>
                     <div class="project-actions"><a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank" class="btn btn-github">GitHub</a><a href="https://github.com/UserZero075/cc-checker-analysis/releases/tag/educational-resource-v1" target="_blank" class="btn btn-page">Release</a><a href="/portfolio/p/cc-checker-analysis.html" class="btn btn-details">Detalles</a></div>
-                    <div class="project-stars" data-repo="cc-checker-analysis">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank">GitHub</a> • <a href="https://github.com/UserZero075/cc-checker-analysis/releases/tag/educational-resource-v1" target="_blank">Release</a></div>
+                    <div class="project-stars" data-repo="cc-checker-analysis"><span class="stat-badge stars">⭐ <span data-stars>0</span></span><span class="stat-badge forks">🍴 <span data-forks>0</span></span></div>
                 </div>
             </div>
         </div>
