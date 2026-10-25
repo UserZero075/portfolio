@@ -11,6 +11,21 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=3">
+    <style>
+        @keyframes highlightPulse {
+            0% { box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.7); transform: scale(1); }
+            50% { box-shadow: 0 0 0 12px rgba(233, 69, 96, 0); transform: scale(1.02); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 69, 96, 0); transform: scale(1); }
+        }
+        .highlight-target {
+            animation: highlightPulse 2s ease-out 3;
+            border: 2px solid #e94560 !important;
+            border-radius: 12px;
+        }
+        .highlight-section {
+            animation: highlightPulse 2s ease-out 3;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,7 +62,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="about">
         <div class="container">
             <h2 class="section-title" data-i18n="about">About Me</h2>
             <div class="about-content">
@@ -86,7 +101,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="projects">
         <div class="container">
             <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
             <div class="projects">
@@ -136,11 +151,11 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="security">
         <div class="container">
             <h2 class="section-title" data-i18n="securityProjects">Pentests, Vulnerabilities & Security</h2>
             <div class="projects">
-                <div class="project">
+                <div class="project" id="cc-checker-analysis">
                     <a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank" class="project-link"></a>
                     <img class="project-preview" src="cc-checker-preview.svg" alt="CC Checker Analysis preview">
                     <div class="project-name">CC Checker Analysis</div>
@@ -151,7 +166,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="services">
         <div class="container">
             <h2 class="section-title" data-i18n="ownServices">Servicios Propios</h2>
             <div class="projects">
@@ -173,7 +188,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="client-projects">
         <div class="container">
             <h2 class="section-title" data-i18n="clientProjects">Proyectos realizados a clientes</h2>
             <div class="projects">
@@ -195,7 +210,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="writing">
         <div class="container">
             <h2 class="section-title" data-i18n="writing">Writing</h2>
             <div class="writing-card">
@@ -209,7 +224,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="skills">
         <div class="container">
             <h2 class="section-title" data-i18n="skills">Skills</h2>
             <div class="skills">
@@ -235,7 +250,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="contact">
         <div class="container">
             <h2 class="section-title" data-i18n="contact">Contact</h2>
             <div class="contact-content">
@@ -441,6 +456,38 @@
         }));
         initI18n();
         loadGitHubPortfolioStats();
+
+        // Deep-link: highlight target card/section from URL hash
+        function handleDeepLink() {
+            const hash = window.location.hash.replace('#', '').trim();
+            if (!hash) return;
+            const target = document.getElementById(hash);
+            if (!target) return;
+            // scroll into view
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // add highlight class
+                if (target.classList.contains('project')) {
+                    target.classList.add('highlight-target');
+                } else {
+                    target.classList.add('highlight-section');
+                }
+                // remove after 6 seconds
+                setTimeout(() => {
+                    target.classList.remove('highlight-target');
+                    target.classList.remove('highlight-section');
+                }, 6000);
+            }, 300);
+        }
+        handleDeepLink();
+        window.addEventListener('hashchange', () => {
+            // remove previous highlights
+            document.querySelectorAll('.highlight-target, .highlight-section').forEach(el => {
+                el.classList.remove('highlight-target');
+                el.classList.remove('highlight-section');
+            });
+            handleDeepLink();
+        });
     </script>
 </body>
 
