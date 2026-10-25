@@ -11,6 +11,25 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=3">
+    <!-- Open Graph / Social Media Preview (general) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Marlon Sarduy Machado - Portfolio">
+    <meta property="og:description" content="Full-stack developer, automation builder, DevFast cofounder. Bots, APIs, web apps, cybersecurity research and more.">
+    <meta property="og:url" content="https://userzero075.github.io/portfolio/">
+    <meta property="og:image" content="https://userzero075.github.io/portfolio/devfast-manager-preview.jpg">
+    <meta property="og:site_name" content="Marlon Sarduy Machado - Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Marlon Sarduy Machado - Portfolio">
+    <meta name="twitter:description" content="Full-stack developer, automation builder, DevFast cofounder. Bots, APIs, web apps, cybersecurity research and more.">
+    <meta name="twitter:image" content="https://userzero075.github.io/portfolio/devfast-manager-preview.jpg">
+    <meta name="twitter:site" content="@User0075_69">
+    <!-- Deep-link OG override (updated by JS for platforms that support it) -->
+    <meta property="og:title" id="og-title" content="Marlon Sarduy Machado - Portfolio">
+    <meta property="og:description" id="og-desc" content="Full-stack developer, automation builder, DevFast cofounder. Bots, APIs, web apps, cybersecurity research and more.">
+    <meta property="og:image" id="og-image" content="https://userzero075.github.io/portfolio/devfast-manager-preview.jpg">
     <style>
         @keyframes highlightPulse {
             0% { box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.7); transform: scale(1); }
@@ -155,7 +174,7 @@
         <div class="container">
             <h2 class="section-title" data-i18n="securityProjects">Pentests, Vulnerabilities & Security</h2>
             <div class="projects">
-                <div class="project" id="cc-checker-analysis">
+                <div class="project" id="cc-checker-analysis" data-og-title="CC Checker Analysis - Educational Malware Research" data-og-desc="Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts." data-og-image="https://userzero075.github.io/portfolio/cc-checker-preview.svg">
                     <a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank" class="project-link"></a>
                     <img class="project-preview" src="cc-checker-preview.svg" alt="CC Checker Analysis preview">
                     <div class="project-name">CC Checker Analysis</div>
@@ -457,12 +476,80 @@
         initI18n();
         loadGitHubPortfolioStats();
 
+        // Open Graph metadata per deep-link target
+        const ogData = {
+            'cc-checker-analysis': {
+                title: 'CC Checker Analysis - Educational Malware Research',
+                desc: 'Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.',
+                image: 'https://userzero075.github.io/portfolio/cc-checker-preview.svg'
+            },
+            'security': {
+                title: 'Pentests, Vulnerabilities & Security - Marlon Sarduy',
+                desc: 'Security research, malware analysis and defensive cybersecurity projects by Marlon Sarduy Machado.',
+                image: 'https://userzero075.github.io/portfolio/cc-checker-preview.svg'
+            },
+            'projects': {
+                title: 'Featured Projects - Marlon Sarduy Machado',
+                desc: 'Full-stack developer portfolio: Telegram bots, web apps, APIs, automation tools and more.',
+                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
+            },
+            'services': {
+                title: 'DevFast Services - Marlon Sarduy Machado',
+                desc: 'DevFast download service, Oniku+ streaming platform and other digital services.',
+                image: 'https://userzero075.github.io/portfolio/onikuplus-preview.png'
+            },
+            'client-projects': {
+                title: 'Client Projects - Marlon Sarduy Machado',
+                desc: 'Client projects: exchange rates, e-commerce and custom web solutions.',
+                image: 'https://userzero075.github.io/portfolio/sheindeals-preview.svg'
+            },
+            'writing': {
+                title: 'Writing - Marlon Sarduy Machado',
+                desc: 'Poetry collection: Versos de Mi Corazón Náufrago on Wattpad.',
+                image: 'https://userzero075.github.io/portfolio/wattpad-cover.jpg'
+            },
+            'skills': {
+                title: 'Skills - Marlon Sarduy Machado',
+                desc: 'Node.js, Python, TypeScript, React, Fastify, Linux, and more.',
+                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
+            },
+            'contact': {
+                title: 'Contact - Marlon Sarduy Machado',
+                desc: 'Get in touch: email, Telegram, GitHub.',
+                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
+            },
+            'about': {
+                title: 'About Me - Marlon Sarduy Machado',
+                desc: 'Cuban full-stack developer, DevFast cofounder, writer. Bots, APIs, web apps and cybersecurity.',
+                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
+            }
+        };
+
+        function updateOGMeta(hash) {
+            const data = ogData[hash];
+            if (!data) return;
+            const titleEl = document.getElementById('og-title');
+            const descEl = document.getElementById('og-desc');
+            const imageEl = document.getElementById('og-image');
+            if (titleEl) titleEl.setAttribute('content', data.title);
+            if (descEl) descEl.setAttribute('content', data.desc);
+            if (imageEl) imageEl.setAttribute('content', data.image);
+            document.title = data.title;
+            const twTitle = document.querySelector('meta[name="twitter:title"]');
+            const twDesc = document.querySelector('meta[name="twitter:description"]');
+            const twImage = document.querySelector('meta[name="twitter:image"]');
+            if (twTitle) twTitle.setAttribute('content', data.title);
+            if (twDesc) twDesc.setAttribute('content', data.desc);
+            if (twImage) twImage.setAttribute('content', data.image);
+        }
+
         // Deep-link: highlight target card/section from URL hash
         function handleDeepLink() {
             const hash = window.location.hash.replace('#', '').trim();
             if (!hash) return;
             const target = document.getElementById(hash);
             if (!target) return;
+            updateOGMeta(hash);
             // scroll into view
             setTimeout(() => {
                 target.scrollIntoView({ behavior: 'smooth', block: 'center' });
