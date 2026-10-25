@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CC Checker Analysis - Marlon Sarduy Machado</title>
+    <meta name="description" content="Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=3">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CC Checker Analysis - Marlon Sarduy Machado">
+    <meta property="og:description" content="Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.">
+    <meta property="og:url" content="https://userzero075.github.io/portfolio/p/cc-checker-analysis.html">
+    <meta property="og:image" content="https://userzero075.github.io/portfolio/cc-checker-preview.svg">
+    <meta property="og:site_name" content="Marlon Sarduy Machado - Portfolio">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CC Checker Analysis - Marlon Sarduy Machado">
+    <meta name="twitter:description" content="Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.">
+    <meta name="twitter:image" content="https://userzero075.github.io/portfolio/cc-checker-preview.svg">
+    <style>
+        body { margin: 0; padding: 0; background: #0f0f1a; color: #e0e0e0; font-family: 'Inter', sans-serif; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+        .back-link { display: inline-block; margin-bottom: 1.5rem; color: #e94560; text-decoration: none; font-size: 0.9rem; }
+        .back-link:hover { text-decoration: underline; }
+        .project-header { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; }
+        .project-header img { width: 200px; height: 120px; object-fit: cover; border-radius: 8px; }
+        .project-header h1 { margin: 0 0 0.5rem; font-size: 1.8rem; color: #fff; }
+        .project-header p { margin: 0; color: #a0a0a0; line-height: 1.6; }
+        .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.5rem 0; }
+        .btn { display: inline-block; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
+        .btn-github { background: #24292e; color: #fff; }
+        .btn-github:hover { background: #3a3f45; }
+        .btn-page { background: #e94560; color: #fff; }
+        .btn-page:hover { background: #c73e54; }
+        .btn-details { background: #333; color: #ccc; border: 1px solid #555; }
+        .btn-details:hover { background: #444; color: #fff; }
+        .section { margin: 2rem 0; }
+        .section h2 { color: #e94560; font-size: 1.2rem; margin-bottom: 0.75rem; }
+        .section p { color: #b0b0b0; line-height: 1.7; }
+        .lang-switch { position: fixed; top: 1rem; right: 1rem; z-index: 10; }
+        .lang-btn { background: #222; color: #ccc; border: 1px solid #444; padding: 0.4rem 0.8rem; cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
+        .lang-btn.active { background: #e94560; color: #fff; border-color: #e94560; }
+    </style>
+</head>
+<body>
+    <div class="lang-switch"><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="es">ES</button></div>
+    <div class="container">
+        <a href="../index.html" class="back-link" data-i18n="backToPortfolio">← Back to Portfolio</a>
+        <div class="project-header">
+            <img src="../cc-checker-preview.svg" alt="CC Checker Analysis preview">
+            <div>
+                <h1>CC Checker Analysis</h1>
+                <p data-i18n="desc">Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.</p>
+            </div>
+        </div>
+        <div class="actions">
+            <a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank" class="btn btn-github">GitHub</a>
+            <a href="https://github.com/UserZero075/cc-checker-analysis/releases/tag/educational-resource-v1" target="_blank" class="btn btn-page">Release</a>
+        </div>
+        <div class="section">
+            <h2 data-i18n="aboutProject">About this project</h2>
+            <p data-i18n="desc">Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.</p>
+        </div>
+    </div>
+    <script>
+        const translations = {
+            en: {
+                backToPortfolio: "← Back to Portfolio",
+                aboutProject: "About this project",
+                desc: "Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts."
+            },
+            es: {
+                backToPortfolio: "← Volver al Portfolio",
+                aboutProject: "Sobre este proyecto",
+                desc: "Recurso educativo de análisis defensivo de malware: muestra de crypto-clipper (CC Checker) con informes, hashes, pseudocódigo redactado y scripts reproducibles."
+            }
+        };
+        function initI18n() {
+            let l = localStorage.getItem('portfolio_lang') || 'en';
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+            document.querySelectorAll('[data-i18n]').forEach(e => { let k = e.getAttribute('data-i18n'); if (translations[l][k]) e.textContent = translations[l][k]; });
+        }
+        document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+            let l = b.dataset.lang; localStorage.setItem('portfolio_lang', l); initI18n();
+        }));
+        initI18n();
+    </script>
+</body>
+</html>

@@ -11,25 +11,6 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=3">
-    <!-- Open Graph / Social Media Preview (general) -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Marlon Sarduy Machado - Portfolio">
-    <meta property="og:description" content="Full-stack developer, automation builder, DevFast cofounder. Bots, APIs, web apps, cybersecurity research and more.">
-    <meta property="og:url" content="https://userzero075.github.io/portfolio/">
-    <meta property="og:image" content="https://userzero075.github.io/portfolio/devfast-manager-preview.jpg">
-    <meta property="og:site_name" content="Marlon Sarduy Machado - Portfolio">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="es_ES">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Marlon Sarduy Machado - Portfolio">
-    <meta name="twitter:description" content="Full-stack developer, automation builder, DevFast cofounder. Bots, APIs, web apps, cybersecurity research and more.">
-    <meta name="twitter:image" content="https://userzero075.github.io/portfolio/devfast-manager-preview.jpg">
-    <meta name="twitter:site" content="@User0075_69">
-    <!-- Deep-link OG override (updated by JS for platforms that support it) -->
-    <meta property="og:title" id="og-title" content="Marlon Sarduy Machado - Portfolio">
-    <meta property="og:description" id="og-desc" content="Full-stack developer, automation builder, DevFast cofounder. Bots, APIs, web apps, cybersecurity research and more.">
-    <meta property="og:image" id="og-image" content="https://userzero075.github.io/portfolio/devfast-manager-preview.jpg">
     <style>
         @keyframes highlightPulse {
             0% { box-shadow: 0 0 0 0 rgba(233, 69, 96, 0.7); transform: scale(1); }
@@ -43,6 +24,52 @@
         }
         .highlight-section {
             animation: highlightPulse 2s ease-out 3;
+        }
+        .project-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-github {
+            background: #24292e;
+            color: #fff;
+        }
+        .btn-github:hover {
+            background: #3a3f45;
+            transform: translateY(-1px);
+        }
+        .btn-page {
+            background: #e94560;
+            color: #fff;
+        }
+        .btn-page:hover {
+            background: #c73e54;
+            transform: translateY(-1px);
+        }
+        .btn-details {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #555;
+        }
+        .btn-details:hover {
+            background: #333;
+            color: #fff;
+            border-color: #888;
+            transform: translateY(-1px);
         }
     </style>
 </head>
@@ -129,6 +156,7 @@
                     <img class="project-preview" src="devfast-manager-preview.jpg" alt="DevFast Manager preview">
                     <div class="project-name">DevFast Manager</div>
                     <div class="project-desc">Business management platform for small and mid-sized digital companies: projects, infrastructure, finances, team, tasks, bugs, internal chat, reports and company settings. Backend Node.js/Fastify/Prisma and frontend React/Tailwind.</div>
+                    <div class="project-actions"><a href="https://github.com/UserZero075/Business-Management-Dashboard" target="_blank" class="btn btn-github">GitHub</a><a href="https://userzero075.github.io/devfast-manager-web/" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/devfast-manager.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars" data-repo="Business-Management-Dashboard">⭐ <span data-stars>24</span> stars • <span data-forks>12</span> forks • <a href="https://github.com/UserZero075/Business-Management-Dashboard" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/devfast-manager-web/" target="_blank">Website</a></div>
                 </div>
                 <div class="project">
@@ -136,6 +164,7 @@
                     <img class="project-preview" src="zerogramjs-preview.svg" alt="ZerogramJS preview">
                     <div class="project-name">ZerogramJS</div>
                     <div class="project-desc">Modern Node.js library for building Telegram bots. Sessions, command routing, inline buttons, middleware and high-capacity file handling.</div>
+                    <div class="project-actions"><a href="https://github.com/UserZero075/ZerogramJS" target="_blank" class="btn btn-github">GitHub</a><a href="https://userzero075.github.io/zerogramjs-web/" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/zerogramjs.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars" data-repo="ZerogramJS">⭐ <span data-stars>2</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/ZerogramJS" target="_blank">GitHub</a> • <a href="https://userzero075.github.io/zerogramjs-web/" target="_blank">Website</a> • <a href="https://www.npmjs.com/package/zerogramjs" target="_blank">npm</a></div>
                 </div>
                 <div class="project">
@@ -143,6 +172,7 @@
                     <img class="project-preview" src="file2linkpreview.svg" alt="File2LinkZeroJS preview">
                     <div class="project-name">File2LinkZeroJS</div>
                     <div class="project-desc">Telegram file-to-link bot powered by ZerogramJS (MTProto) and JsonFlux. Forward any file, get download/watch/share links. Single-page WebApp with admin panel, moderation, i18n, quotas and live updates via Socket.IO. No 50MB limit, no external database.</div>
+                    <div class="project-actions"><a href="https://github.com/UserZero075/File2LinkZeroJS" target="_blank" class="btn btn-github">GitHub</a><a href="https://github.com/UserZero075/File2LinkZeroJS/releases/tag/v0.1.0" target="_blank" class="btn btn-page">Release</a><a href="/portfolio/p/file2linkzerojs.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars" data-repo="File2LinkZeroJS">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/File2LinkZeroJS" target="_blank">GitHub</a> • <a href="https://github.com/UserZero075/File2LinkZeroJS/releases/tag/v0.1.0" target="_blank">Release</a></div>
                 </div>
                 <div class="project">
@@ -150,6 +180,7 @@
                     <img class="project-preview" src="webconsole-preview.svg" alt="WebConsole preview">
                     <div class="project-name">WebConsole</div>
                     <div class="project-desc">Tailscale-only web terminal with real PTY, xterm.js, binary/zlib low-bandwidth transport and local input buffering for instant typing on weak mobile links.</div>
+                    <div class="project-actions"><a href="https://github.com/UserZero075/webconsole" target="_blank" class="btn btn-github">GitHub</a><a href="https://github.com/UserZero075/webconsole/releases/tag/v1.0.0" target="_blank" class="btn btn-page">Release</a><a href="/portfolio/p/webconsole.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars" data-repo="webconsole">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/webconsole" target="_blank">GitHub</a> • <a href="https://github.com/UserZero075/webconsole/releases/tag/v1.0.0" target="_blank">Release</a></div>
                 </div>
                 <div class="project">
@@ -157,6 +188,7 @@
                     <img class="project-preview" src="jsonflux-preview.svg" alt="JsonFlux preview">
                     <div class="project-name">JsonFlux</div>
                     <div class="project-desc">Project focused on structured JSON/data flow tooling. I added a temporary generic preview until I prepare a better visual identity.</div>
+                    <div class="project-actions"><a href="https://github.com/UserZero075/JsonFlux" target="_blank" class="btn btn-github">GitHub</a><a href="/portfolio/p/jsonflux.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars" data-repo="JsonFlux">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/JsonFlux" target="_blank">GitHub</a></div>
                 </div>
                 <div class="project">
@@ -164,6 +196,7 @@
                     <img class="project-preview" src="spawnspace-preview.svg" alt="SpawnSpace preview">
                     <div class="project-name">SpawnSpace</div>
                     <div class="project-desc">Linux storage expansion script. Creates and mounts LVM-based storage to increase usable shared space.</div>
+                    <div class="project-actions"><a href="https://github.com/UserZero075/SpawnSpace" target="_blank" class="btn btn-github">GitHub</a><a href="/portfolio/p/spawnspace.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars" data-repo="SpawnSpace">⭐ <span data-stars>3</span> stars • <span data-forks>1</span> forks</div>
                 </div>
             </div>
@@ -174,11 +207,12 @@
         <div class="container">
             <h2 class="section-title" data-i18n="securityProjects">Pentests, Vulnerabilities & Security</h2>
             <div class="projects">
-                <div class="project" id="cc-checker-analysis" data-og-title="CC Checker Analysis - Educational Malware Research" data-og-desc="Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts." data-og-image="https://userzero075.github.io/portfolio/cc-checker-preview.svg">
+                <div class="project" id="cc-checker-analysis">
                     <a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank" class="project-link"></a>
                     <img class="project-preview" src="cc-checker-preview.svg" alt="CC Checker Analysis preview">
                     <div class="project-name">CC Checker Analysis</div>
                     <div class="project-desc" data-i18n="ccCheckerDesc">Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.</div>
+                    <div class="project-actions"><a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank" class="btn btn-github">GitHub</a><a href="https://github.com/UserZero075/cc-checker-analysis/releases/tag/educational-resource-v1" target="_blank" class="btn btn-page">Release</a><a href="/portfolio/p/cc-checker-analysis.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars" data-repo="cc-checker-analysis">⭐ <span data-stars>0</span> stars • <span data-forks>0</span> forks • <a href="https://github.com/UserZero075/cc-checker-analysis" target="_blank">GitHub</a> • <a href="https://github.com/UserZero075/cc-checker-analysis/releases/tag/educational-resource-v1" target="_blank">Release</a></div>
                 </div>
             </div>
@@ -194,6 +228,7 @@
                     <img class="project-preview" src="df-vpn-downloader.jpg" alt="DF VPN Downloader preview">
                     <div class="project-name">DF VPN Downloader</div>
                     <div class="project-desc" data-i18n="dfVpnDesc">My DevFast download service for Cuba: a bot, server and companion client that lets users download internet content without spending mobile data packages. It now has its own Android APK and a Windows program, replacing the old Termux/script-heavy setup.</div>
+                    <div class="project-actions"><a href="http://t.me/DevFastShopBot/devfastapp?startapp=product_1" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/df-vpn-downloader.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars service-links"><span data-i18n="serviceLabel">Servicio</span> • <a href="http://t.me/DevFastShopBot/devfastapp?startapp=product_1" target="_blank" rel="noopener noreferrer" data-i18n="hireService">Contratar servicio</a> • <a href="https://t.me/DevFast_Support" target="_blank" rel="noopener noreferrer">DevFast support</a></div>
                 </div>
                 <div class="project service-project">
@@ -201,6 +236,7 @@
                     <img class="project-preview" src="onikuplus-preview.png" alt="Vista previa de Oniku+">
                     <div class="project-name">Oniku+</div>
                     <div class="project-desc" data-i18n="onikuDesc">Personal anime streaming and catalog web platform built with an ultra-lightweight Vanilla SPA and Node.js/Fastify backend. Features an optimized player, community blog, and admin dashboard.</div>
+                    <div class="project-actions"><a href="https://onikuplus.duckdns.org" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/onikuplus.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars service-links"><span data-i18n="serviceLabel">Servicio</span> • <a href="https://onikuplus.duckdns.org" target="_blank" rel="noopener noreferrer" data-i18n="visitWebsite">Visitar web</a></div>
                 </div>
             </div>
@@ -216,6 +252,7 @@
                     <img class="project-preview" src="mvtasas-preview.gif" alt="Vista previa de Tasas de Cambio M.V.">
                     <div class="project-name">Tasas de Cambio M.V.</div>
                     <div class="project-desc" data-i18n="mvtasasDesc">Web de tasas de cambio en CUP para el mercado cubano, desarrollada para un cliente.</div>
+                    <div class="project-actions"><a href="https://mvtasas.duckdns.org" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/tasas-mv.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars service-links"><span data-i18n="clientProject">Proyecto para cliente</span> • <a href="https://mvtasas.duckdns.org" target="_blank" rel="noopener noreferrer" data-i18n="visitWebsite">Visitar web</a></div>
                 </div>
                 <div class="project featured-project">
@@ -223,6 +260,7 @@
                     <img class="project-preview" src="sheindeals-preview.svg" alt="Vista previa de SheinDeals Cuba">
                     <div class="project-name">SheinDeals Cuba</div>
                     <div class="project-desc" data-i18n="sheinDealsDesc">Tienda online de SheinDeals para Cuba, con catálogo de ropa seleccionada y encargos de productos SHEIN para toda la isla. Incluye selección de moneda y forma de pago, carrito, pedidos, cuenta de usuario, referidos y notificaciones.</div>
+                    <div class="project-actions"><a href="https://shop.sheindealscuba.com/" target="_blank" class="btn btn-page">Página</a><a href="/portfolio/p/sheindeals-cuba.html" class="btn btn-details">Detalles</a></div>
                     <div class="project-stars service-links"><span data-i18n="clientProject">Proyecto para cliente</span> • <a href="https://shop.sheindealscuba.com/" target="_blank" rel="noopener noreferrer" data-i18n="visitWebsite">Visitar web</a></div>
                 </div>
             </div>
@@ -476,80 +514,12 @@
         initI18n();
         loadGitHubPortfolioStats();
 
-        // Open Graph metadata per deep-link target
-        const ogData = {
-            'cc-checker-analysis': {
-                title: 'CC Checker Analysis - Educational Malware Research',
-                desc: 'Educational defensive malware analysis: crypto-clipper sample (CC Checker) with reports, hashes, redacted pseudocode and reproducible scripts.',
-                image: 'https://userzero075.github.io/portfolio/cc-checker-preview.svg'
-            },
-            'security': {
-                title: 'Pentests, Vulnerabilities & Security - Marlon Sarduy',
-                desc: 'Security research, malware analysis and defensive cybersecurity projects by Marlon Sarduy Machado.',
-                image: 'https://userzero075.github.io/portfolio/cc-checker-preview.svg'
-            },
-            'projects': {
-                title: 'Featured Projects - Marlon Sarduy Machado',
-                desc: 'Full-stack developer portfolio: Telegram bots, web apps, APIs, automation tools and more.',
-                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
-            },
-            'services': {
-                title: 'DevFast Services - Marlon Sarduy Machado',
-                desc: 'DevFast download service, Oniku+ streaming platform and other digital services.',
-                image: 'https://userzero075.github.io/portfolio/onikuplus-preview.png'
-            },
-            'client-projects': {
-                title: 'Client Projects - Marlon Sarduy Machado',
-                desc: 'Client projects: exchange rates, e-commerce and custom web solutions.',
-                image: 'https://userzero075.github.io/portfolio/sheindeals-preview.svg'
-            },
-            'writing': {
-                title: 'Writing - Marlon Sarduy Machado',
-                desc: 'Poetry collection: Versos de Mi Corazón Náufrago on Wattpad.',
-                image: 'https://userzero075.github.io/portfolio/wattpad-cover.jpg'
-            },
-            'skills': {
-                title: 'Skills - Marlon Sarduy Machado',
-                desc: 'Node.js, Python, TypeScript, React, Fastify, Linux, and more.',
-                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
-            },
-            'contact': {
-                title: 'Contact - Marlon Sarduy Machado',
-                desc: 'Get in touch: email, Telegram, GitHub.',
-                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
-            },
-            'about': {
-                title: 'About Me - Marlon Sarduy Machado',
-                desc: 'Cuban full-stack developer, DevFast cofounder, writer. Bots, APIs, web apps and cybersecurity.',
-                image: 'https://userzero075.github.io/portfolio/devfast-manager-preview.jpg'
-            }
-        };
-
-        function updateOGMeta(hash) {
-            const data = ogData[hash];
-            if (!data) return;
-            const titleEl = document.getElementById('og-title');
-            const descEl = document.getElementById('og-desc');
-            const imageEl = document.getElementById('og-image');
-            if (titleEl) titleEl.setAttribute('content', data.title);
-            if (descEl) descEl.setAttribute('content', data.desc);
-            if (imageEl) imageEl.setAttribute('content', data.image);
-            document.title = data.title;
-            const twTitle = document.querySelector('meta[name="twitter:title"]');
-            const twDesc = document.querySelector('meta[name="twitter:description"]');
-            const twImage = document.querySelector('meta[name="twitter:image"]');
-            if (twTitle) twTitle.setAttribute('content', data.title);
-            if (twDesc) twDesc.setAttribute('content', data.desc);
-            if (twImage) twImage.setAttribute('content', data.image);
-        }
-
         // Deep-link: highlight target card/section from URL hash
         function handleDeepLink() {
             const hash = window.location.hash.replace('#', '').trim();
             if (!hash) return;
             const target = document.getElementById(hash);
             if (!target) return;
-            updateOGMeta(hash);
             // scroll into view
             setTimeout(() => {
                 target.scrollIntoView({ behavior: 'smooth', block: 'center' });
