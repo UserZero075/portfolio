@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">TripAdvisor Restaurant Scraper Preview</title>
+  <desc id="desc">High-performance restaurant scraper with DataDome bypass and TLS impersonation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1311"/>
+      <stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#00af87"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <circle cx="820" cy="90" r="170" fill="#00af87" opacity=".12"/>
+  <circle cx="120" cy="460" r="200" fill="#10b981" opacity=".08"/>
+
+  <g filter="url(#shadow)">
+    <rect x="86" y="74" width="788" height="392" rx="22" fill="#161b22" stroke="#24302c"/>
+    <rect x="86" y="74" width="788" height="54" rx="22" fill="#0e1714"/>
+    <path d="M86 104h788v24H86z" fill="#0e1714"/>
+    <circle cx="124" cy="101" r="7" fill="#ff5f56"/>
+    <circle cx="150" cy="101" r="7" fill="#ffbd2e"/>
+    <circle cx="176" cy="101" r="7" fill="#27c93f"/>
+
+    <rect x="635" y="89" width="108" height="24" rx="12" fill="#122b22" stroke="#00af87"/>
+    <text x="689" y="105" text-anchor="middle" fill="#34d399" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">DATADOME BYPASS</text>
+    <rect x="753" y="89" width="85" height="24" rx="12" fill="#1b2a38" stroke="#38bdf8"/>
+    <text x="795" y="105" text-anchor="middle" fill="#7dd3fc" font-family="Inter, sans-serif" font-size="12" font-weight="700">TLS CFFI</text>
+
+    <rect x="118" y="152" width="724" height="280" rx="16" fill="#0b110f" stroke="#1f2d27"/>
+
+    <text x="146" y="196" fill="url(#accent)" font-family="JetBrains Mono, monospace" font-size="22" font-weight="700">TripAdvisor Restaurant Scraper</text>
+    <text x="146" y="228" fill="#8b949e" font-family="JetBrains Mono, monospace" font-size="14">Multi-City Crawler &amp; Anti-Bot Protection Bypass</text>
+
+    <text x="146" y="274" fill="#a7f3d0" font-family="JetBrains Mono, monospace" font-size="15">&gt; Engine: invisible_playwright + curl_cffi (Firefox 133 TLS)</text>
+    <text x="146" y="306" fill="#e2e8f0" font-family="JetBrains Mono, monospace" font-size="15">&gt; Extraction: Schema.org (JSON-LD) memory parsing</text>
+    <text x="146" y="338" fill="#e2e8f0" font-family="JetBrains Mono, monospace" font-size="15">&gt; Output: 5,900+ real records • 95% phone capture • CSV / SQLite</text>
+    <text x="146" y="370" fill="#94a3b8" font-family="JetBrains Mono, monospace" font-size="14">&gt; Pacing: Adaptive leaky-bucket cooldowns (~30-100 req/min)</text>
+
+    <rect x="146" y="394" width="168" height="26" rx="13" fill="#122b22" stroke="#00af87"/>
+    <text x="230" y="411" text-anchor="middle" fill="#34d399" font-family="Inter, sans-serif" font-size="12" font-weight="700">Python • Playwright • SQLite</text>
+  </g>
+</svg>
