@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripAdvisor Restaurant Scraper - Marlon Sarduy Machado</title>
+    <meta name="description" content="High-performance TripAdvisor restaurant scraper & crawler with DataDome anti-bot bypass, C++ patched Firefox fingerprinting, and TLS impersonation.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TripAdvisor Restaurant Scraper - Marlon Sarduy Machado">
+    <meta property="og:description" content="High-performance TripAdvisor restaurant scraper with DataDome bypass, TLS fingerprint impersonation, and multi-city support.">
+    <meta property="og:url" content="https://userzero075.github.io/portfolio/p/tripadvisor-restaurant-scraper.html">
+    <meta property="og:image" content="https://userzero075.github.io/portfolio/tripadvisor-scraper-preview.svg">
+    <meta property="og:site_name" content="Marlon Sarduy Machado - Portfolio">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TripAdvisor Restaurant Scraper - Marlon Sarduy Machado">
+    <meta name="twitter:description" content="High-performance TripAdvisor restaurant scraper with DataDome bypass, TLS fingerprint impersonation, and multi-city support.">
+    <meta name="twitter:image" content="https://userzero075.github.io/portfolio/tripadvisor-scraper-preview.svg">
+    <style>
+        :root {
+            --bg: #0b1311;
+            --card: #131f1b;
+            --accent: #00af87;
+            --accent2: #34d399;
+            --text: #e6edf3;
+            --muted: #8b949e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
+        .container { max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 2rem; color: var(--accent2); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+        .back-link:hover { color: var(--accent); }
+        .hero { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 2rem; flex-wrap: wrap; }
+        .hero img { width: 220px; height: 130px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+        .hero-info h1 { margin: 0 0 0.6rem; font-size: 1.6rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+        .hero-info p { margin: 0; color: var(--muted); line-height: 1.65; font-size: 0.95rem; }
+        .actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.5rem 0 2rem; }
+        .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease; border: 1px solid transparent; }
+        .btn-github { background: rgba(255,255,255,0.08); color: var(--text); border-color: rgba(255,255,255,0.12); }
+        .btn-github:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
+        .btn-page { background: var(--accent); color: #fff; }
+        .btn-page:hover { filter: brightness(1.15); transform: translateY(-1px); }
+        .btn-details { background: transparent; color: var(--muted); border-color: rgba(255,255,255,0.15); }
+        .btn-details:hover { color: var(--text); border-color: var(--accent); transform: translateY(-1px); }
+        .section { margin: 2rem 0; padding: 1.5rem; background: var(--card); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
+        .section h2 { color: var(--accent2); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 600; }
+        .section p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .section ul { list-style: none; margin: 0; padding: 0; }
+        .section li { color: var(--muted); line-height: 1.7; font-size: 0.92rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .section li:last-child { border-bottom: none; }
+        .section li strong { color: var(--text); }
+        .lang-switch { position: fixed; top: 1rem; right: 1rem; z-index: 10; display: flex; gap: 0.4rem; }
+        .lang-btn { background: rgba(255,255,255,0.08); color: var(--muted); border: 1px solid rgba(255,255,255,0.12); padding: 0.35rem 0.7rem; cursor: pointer; border-radius: 6px; font-size: 0.8rem; font-weight: 500; transition: all 0.2s; }
+        .lang-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .lang-btn:hover:not(.active) { color: var(--text); border-color: var(--accent2); }
+        .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; color: var(--muted); font-size: 0.8rem; }
+        @media (max-width: 600px) {
+            .hero { flex-direction: column; }
+            .hero img { width: 100%; height: auto; }
+            .hero-info h1 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lang-switch"><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="es">ES</button></div>
+    <div class="container">
+        <a href="../index.html#scraping" class="back-link" data-i18n="backToPortfolio">← Back to Portfolio</a>
+        <div class="hero">
+            <img src="../tripadvisor-scraper-preview.svg" alt="TripAdvisor Restaurant Scraper preview">
+            <div class="hero-info">
+                <h1>TripAdvisor Restaurant Scraper</h1>
+                <p data-i18n="desc">High-performance restaurant crawler with DataDome anti-bot bypass, TLS fingerprint impersonation, and multi-city support. Extracts verified commercial contacts, phones, ratings, and addresses into SQLite and CSV.</p>
+            </div>
+        </div>
+        <div class="actions">
+            <a href="https://github.com/UserZero075/tripadvisor-restaurant-scraper" target="_blank" class="btn btn-github">GitHub</a>
+            <a href="../index.html#scraping" class="btn btn-details">← Portfolio</a>
+        </div>
+
+        <div class="section">
+            <h2 data-i18n="aboutTitle">About this project</h2>
+            <p data-i18n="aboutText1">Developed to systematically catalog and extract complete restaurant registries from TripAdvisor across multiple cities (Barcelona, Valencia, Madrid, etc.) without triggering bot detection or geographic IP bans.</p>
+            <p data-i18n="aboutText2">The project implements a hybrid architecture combining browser-based telemetry resolution (C++ patched Firefox with humanized mouse trajectories via Invisible Playwright) with native HTTP TLS impersonation (curl_cffi with Firefox 133 fingerprint), achieving high throughput and stability.</p>
+        </div>
+
+        <div class="section">
+            <h2 data-i18n="featuresTitle">Technical Highlights</h2>
+            <ul>
+                <li><strong data-i18n="f1Title">DataDome Anti-Bot Bypass:</strong> <span data-i18n="f1Desc">Automated handling of interstitials and device check challenges without commercial paid proxy dependencies.</span></li>
+                <li><strong data-i18n="f2Title">Hybrid Execution Engine:</strong> <span data-i18n="f2Desc">Single-handshake session acquisition followed by direct HTTP requests parsing Schema.org JSON-LD in memory.</span></li>
+                <li><strong data-i18n="f3Title">Adaptive Pacing &amp; IP Protection:</strong> <span data-i18n="f3Desc">Calibrated token-bucket cooldowns (~25-35 req/min sustained, peak 100/min) preventing IP exhaustion.</span></li>
+                <li><strong data-i18n="f4Title">High Data Fidelity:</strong> <span data-i18n="f4Desc">95%+ phone number extraction rate, normalized postal addresses, cuisines, price ranges and review counts.</span></li>
+                <li><strong data-i18n="f5Title">Dual Persistence:</strong> <span data-i18n="f5Desc">Atomic SQLite state storage with resume support and automated UTF-8 BOM CSV exports compatible with Excel.</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">Marlon Sarduy Machado · UserZero075</div>
+    <script>
+        const translations = {
+            en: {
+                backToPortfolio: "← Back to Portfolio",
+                desc: "High-performance restaurant crawler with DataDome anti-bot bypass, TLS fingerprint impersonation, and multi-city support. Extracts verified commercial contacts, phones, ratings, and addresses into SQLite and CSV.",
+                aboutTitle: "About this project",
+                aboutText1: "Developed to systematically catalog and extract complete restaurant registries from TripAdvisor across multiple cities (Barcelona, Valencia, Madrid, etc.) without triggering bot detection or geographic IP bans.",
+                aboutText2: "The project implements a hybrid architecture combining browser-based telemetry resolution (C++ patched Firefox with humanized mouse trajectories via Invisible Playwright) with native HTTP TLS impersonation (curl_cffi with Firefox 133 fingerprint), achieving high throughput and stability.",
+                featuresTitle: "Technical Highlights",
+                f1Title: "DataDome Anti-Bot Bypass:",
+                f1Desc: "Automated handling of interstitials and device check challenges without commercial paid proxy dependencies.",
+                f2Title: "Hybrid Execution Engine:",
+                f2Desc: "Single-handshake session acquisition followed by direct HTTP requests parsing Schema.org JSON-LD in memory.",
+                f3Title: "Adaptive Pacing & IP Protection:",
+                f3Desc: "Calibrated token-bucket cooldowns (~25-35 req/min sustained, peak 100/min) preventing IP exhaustion.",
+                f4Title: "High Data Fidelity:",
+                f4Desc: "95%+ phone number extraction rate, normalized postal addresses, cuisines, price ranges and review counts.",
+                f5Title: "Dual Persistence:",
+                f5Desc: "Atomic SQLite state storage with resume support and automated UTF-8 BOM CSV exports compatible with Excel."
+            },
+            es: {
+                backToPortfolio: "← Volver al Portfolio",
+                desc: "Crawler y extractor de restaurantes de alto rendimiento con evasión avanzada de DataDome, huella de navegador en C++ (Firefox) e impersonación TLS nativa (curl_cffi). Captura datos comerciales completos (teléfonos, direcciones unificadas, calificaciones y cocina) en SQLite y CSV.",
+                aboutTitle: "Sobre este proyecto",
+                aboutText1: "Desarrollado para catalogar y extraer de forma exhaustiva el registro comercial de restaurantes de TripAdvisor en diversas ciudades (Barcelona, Valencia, Madrid, etc.) eludiendo bloqueos anti-bot y retos geográficos.",
+                aboutText2: "El proyecto implementa una arquitectura híbrida que combina la resolución de telemetría en navegador (Firefox parcheado a nivel C++ con movimientos humanizados de ratón vía Invisible Playwright) con peticiones HTTP nativas con huella TLS (curl_cffi con firma de Firefox 133), logrando alta velocidad y estabilidad.",
+                featuresTitle: "Aspectos Técnicos Destacados",
+                f1Title: "Evasión de DataDome:",
+                f1Desc: "Resolución automatizada de interstitials y comprobaciones de dispositivo sin depender de servicios de pago de proxies.",
+                f2Title: "Motor Híbrido de Alto Rendimiento:",
+                f2Desc: "Handshake inicial de sesión en navegador y posterior extracción directa en memoria parseando bloques JSON-LD Schema.org.",
+                f3Title: "Pacing Adaptativo y Protección de IP:",
+                f3Desc: "Enfriamientos calibrados por token bucket (~25-35 req/min sostenidas, pico de 100/min) para evitar desgaste de la IP pública.",
+                f4Title: "Alta Fidelidad de Datos:",
+                f4Desc: "Más del 95% de teléfonos directos capturados, direcciones normalizadas, tipos de cocina, precios y opiniones.",
+                f5Title: "Persistencia Dual:",
+                f5Desc: "Almacenamiento atómico en SQLite con reanudación desatendida y exportación automática a CSV con UTF-8 BOM."
+            }
+        };
+        function initI18n() {
+            let l = localStorage.getItem('portfolio_lang') || 'en';
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+            document.querySelectorAll('[data-i18n]').forEach(e => { let k = e.getAttribute('data-i18n'); if (translations[l][k]) e.textContent = translations[l][k]; });
+        }
+        document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+            let l = b.dataset.lang; localStorage.setItem('portfolio_lang', l); initI18n();
+        }));
+        initI18n();
+    </script>
+</body>
+</html>
