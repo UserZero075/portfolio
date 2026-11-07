@@ -1,1 +1,211 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#09090b"/><rect x="70" y="80" width="1060" height="470" rx="34" fill="#111827" stroke="#334155"/><text x="105" y="170" fill="#22d3ee" font-family="monospace" font-size="34">{</text><text x="145" y="235" fill="#f8fafc" font-family="monospace" font-size="54">"JsonFlux": "data flow"</text><text x="145" y="315" fill="#94a3b8" font-family="monospace" font-size="38">"status": "generic preview"</text><text x="105" y="415" fill="#22d3ee" font-family="monospace" font-size="34">}</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">JsonFlux Preview</title>
+  <desc id="desc">Lightweight real-time JSON database with Socket.IO live synchronization and cross-platform clients.</desc>
+  <defs>
+    <linearGradient id="canvasBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070a12"/>
+      <stop offset="50%" stop-color="#0c1220"/>
+      <stop offset="100%" stop-color="#080d18"/>
+    </linearGradient>
+
+    <linearGradient id="cyanGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <linearGradient id="purpleGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+
+    <linearGradient id="fluxLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.2"/>
+    </linearGradient>
+
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="16" stdDeviation="22" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+
+    <filter id="neonPulse" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="960" height="540" fill="url(#canvasBg)"/>
+
+  <!-- Subtle Ambient Glows -->
+  <circle cx="820" cy="80" r="170" fill="#06b6d4" opacity="0.08"/>
+  <circle cx="150" cy="460" r="190" fill="#818cf8" opacity="0.07"/>
+
+  <!-- Main Application Window -->
+  <g filter="url(#boxShadow)">
+    <rect x="25" y="20" width="910" height="500" rx="14" fill="#0c111c" stroke="#1e293b" stroke-width="1.2"/>
+
+    <!-- Window Topbar -->
+    <path d="M 25 34 Q 25 20 39 20 L 921 20 Q 935 20 935 34 L 935 64 L 25 64 Z" fill="#111827"/>
+    <line x1="25" y1="64" x2="935" y2="64" stroke="#1e293b" stroke-width="1"/>
+
+    <!-- Window Controls -->
+    <circle cx="48" cy="42" r="5.5" fill="#ef4444"/>
+    <circle cx="67" cy="42" r="5.5" fill="#f59e0b"/>
+    <circle cx="86" cy="42" r="5.5" fill="#10b981"/>
+
+    <!-- Center Window Title -->
+    <text x="480" y="47" text-anchor="middle" fill="#94a3b8" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">
+      JsonFlux Server · <tspan fill="#38bdf8" font-family="JetBrains Mono, monospace">ws://127.0.0.1:4000</tspan> · Real-Time Engine
+    </text>
+
+    <!-- Topbar Badges (right) -->
+    <rect x="704" y="31" width="112" height="22" rx="11" fill="#082f49" stroke="#0284c7" stroke-width="0.8"/>
+    <circle cx="717" cy="42" r="3.5" fill="#38bdf8">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <text x="726" y="46" fill="#38bdf8" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700">SOCKET.IO LIVE</text>
+
+    <rect x="824" y="31" width="96" height="22" rx="11" fill="#1e1b4b" stroke="#6366f1" stroke-width="0.8"/>
+    <text x="872" y="46" text-anchor="middle" fill="#a5b4fc" font-family="Inter, system-ui, sans-serif" font-size="10.5" font-weight="600">Self-Hosted 📦</text>
+
+    <!-- ==================== MAIN WORKBENCH SPLIT ==================== -->
+
+    <!-- LEFT PANEL: JSON Collection Document (x=45, y=82, width=420, height=365) -->
+    <g transform="translate(45, 82)">
+      <!-- Panel Container -->
+      <rect width="415" height="360" rx="10" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+
+      <!-- Panel Header Bar -->
+      <path d="M 0 10 Q 0 0 10 0 L 405 0 Q 415 0 415 10 L 415 34 L 0 34 Z" fill="#0f172a"/>
+      <line x1="0" y1="34" x2="415" y2="34" stroke="#1e293b" stroke-width="1"/>
+
+      <text x="14" y="22" fill="#38bdf8" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">{ }</text>
+      <text x="36" y="21" fill="#e2e8f0" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="600">collections/users.json</text>
+
+      <rect x="330" y="7" width="70" height="20" rx="4" fill="#134e4a"/>
+      <text x="365" y="21" text-anchor="middle" fill="#2dd4bf" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="600">IN-MEMORY</text>
+
+      <!-- Code Content -->
+      <g transform="translate(16, 54)" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11.5" line-height="1.5">
+        <text x="0" y="0" fill="#94a3b8">{</text>
+        <text x="16" y="19"><tspan fill="#38bdf8">"_id"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#a5f3fc">"usr_94f8a2b"</tspan><tspan fill="#94a3b8">,</tspan></text>
+        <text x="16" y="38"><tspan fill="#38bdf8">"username"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#a5f3fc">"UserZero075"</tspan><tspan fill="#94a3b8">,</tspan></text>
+        <text x="16" y="57"><tspan fill="#38bdf8">"app"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#a5f3fc">"File2LinkZeroJS"</tspan><tspan fill="#94a3b8">,</tspan></text>
+        <text x="16" y="76"><tspan fill="#38bdf8">"quota_bytes"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#f59e0b">10737418240</tspan><tspan fill="#94a3b8">,</tspan></text>
+        <text x="16" y="95"><tspan fill="#38bdf8">"tier"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#a5f3fc">"unlimited"</tspan><tspan fill="#94a3b8">,</tspan></text>
+
+        <!-- Nested Flux Object (Highlighted) -->
+        <rect x="12" y="106" width="375" height="66" rx="6" fill="#0e2338" stroke="#0284c7" stroke-width="0.8"/>
+        <text x="18" y="123"><tspan fill="#38bdf8">"_flux"</tspan><tspan fill="#94a3b8">: {</tspan></text>
+        <text x="32" y="141"><tspan fill="#7dd3fc">"live_clients"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#f59e0b">2</tspan><tspan fill="#94a3b8">, </tspan><tspan fill="#7dd3fc">"stream"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#34d399">true</tspan><tspan fill="#94a3b8">,</tspan></text>
+        <text x="32" y="159"><tspan fill="#7dd3fc">"latency_ms"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#f59e0b">0.8</tspan><tspan fill="#94a3b8">, </tspan><tspan fill="#7dd3fc">"version"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#f59e0b">42</tspan></text>
+        <text x="18" y="177" fill="#94a3b8">},</text>
+
+        <text x="16" y="196"><tspan fill="#38bdf8">"updated_at"</tspan><tspan fill="#94a3b8">: </tspan><tspan fill="#a5f3fc">"2026-11-06T22:30:00Z"</tspan></text>
+        <text x="0" y="215" fill="#94a3b8">}</text>
+
+        <!-- Atomic persist info -->
+        <rect x="0" y="235" width="383" height="48" rx="6" fill="#0c1829" stroke="#1e293b" stroke-width="1"/>
+        <text x="14" y="254" fill="#38bdf8" font-size="10.5" font-weight="650">⚡ Local CRUD &amp; In-Memory Indexing</text>
+        <text x="14" y="271" fill="#64748b" font-size="10">Fast key-value queries · Atomic flush to JSON on disk</text>
+      </g>
+    </g>
+
+    <!-- CENTER FLUX CONNECTOR (x=465 to x=495) -->
+    <g transform="translate(460, 240)">
+      <line x1="0" y1="20" x2="40" y2="20" stroke="url(#fluxLine)" stroke-width="3" stroke-dasharray="4,3"/>
+      <circle cx="20" cy="20" r="14" fill="#082f49" stroke="#06b6d4" stroke-width="1.5" filter="url(#neonPulse)"/>
+      <text x="20" y="24" text-anchor="middle" fill="#38bdf8" font-family="JetBrains Mono, monospace" font-size="12" font-weight="bold">⇄</text>
+    </g>
+
+    <!-- RIGHT PANEL: Live Socket.IO Stream & SDK Clients (x=500, y=82, width=415, height=360) -->
+    <g transform="translate(500, 82)">
+      <!-- Panel Container -->
+      <rect width="415" height="360" rx="10" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+
+      <!-- Panel Header Bar -->
+      <path d="M 0 10 Q 0 0 10 0 L 405 0 Q 415 0 415 10 L 415 34 L 0 34 Z" fill="#0f172a"/>
+      <line x1="0" y1="34" x2="415" y2="34" stroke="#1e293b" stroke-width="1"/>
+
+      <text x="14" y="21" fill="#818cf8" font-family="JetBrains Mono, monospace" font-size="12" font-weight="700">⚡</text>
+      <text x="32" y="21" fill="#e2e8f0" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="600">Real-Time Event Stream</text>
+
+      <rect x="330" y="7" width="70" height="20" rx="4" fill="#1e1b4b"/>
+      <text x="365" y="21" text-anchor="middle" fill="#a5b4fc" font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="600">CONNECTED</text>
+
+      <!-- Connected Clients strip -->
+      <g transform="translate(14, 46)">
+        <rect width="186" height="32" rx="6" fill="#101c30" stroke="#1e3a5f" stroke-width="0.8"/>
+        <circle cx="12" cy="16" r="3.5" fill="#38bdf8"/>
+        <text x="22" y="16" fill="#e2e8f0" font-family="Inter, system-ui, sans-serif" font-size="10.5" font-weight="600">Node.js Client</text>
+        <text x="22" y="26" fill="#64748b" font-family="JetBrains Mono, monospace" font-size="8.5">SDK v1.2 · Bot Worker</text>
+
+        <rect x="198" width="186" height="32" rx="6" fill="#1b1736" stroke="#3b2d6a" stroke-width="0.8"/>
+        <circle cx="210" cy="16" r="3.5" fill="#a855f7"/>
+        <text x="220" y="16" fill="#e2e8f0" font-family="Inter, system-ui, sans-serif" font-size="10.5" font-weight="600">Python Client</text>
+        <text x="220" y="26" fill="#64748b" font-family="JetBrains Mono, monospace" font-size="8.5">pyjsonflux · Analytics</text>
+      </g>
+
+      <!-- Live Stream Logs -->
+      <g transform="translate(14, 92)" font-family="JetBrains Mono, monospace" font-size="10.8">
+        <rect width="384" height="252" rx="6" fill="#060911" stroke="#172033" stroke-width="1"/>
+
+        <g transform="translate(12, 22)">
+          <text x="0" y="0" fill="#64748b">[22:30:00.104] <tspan fill="#34d399">READY</tspan> Server listening :4000</text>
+          
+          <text x="0" y="24" fill="#64748b">[22:30:01.420] <tspan fill="#38bdf8">CLIENT</tspan> Handshake from Node.js (bot)</text>
+          
+          <text x="0" y="48" fill="#64748b">[22:30:02.015] <tspan fill="#a855f7">CLIENT</tspan> Handshake from Python (worker)</text>
+
+          <text x="0" y="74" fill="#e2e8f0">
+            <tspan fill="#06b6d4">MUTATION</tspan> » users.update(<tspan fill="#38bdf8">"usr_94f8a2b"</tspan>)
+          </text>
+
+          <text x="0" y="96" fill="#a5f3fc">
+            ↳ Set quota_bytes = <tspan fill="#f59e0b">10737418240</tspan> (10 GB)
+          </text>
+
+          <!-- Delta Broadcast Callout -->
+          <rect x="0" y="110" width="360" height="38" rx="5" fill="#082f49" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="10" y="126" fill="#38bdf8" font-size="10" font-weight="bold">
+            ⚡ LIVE BROADCAST → [data:change]
+          </text>
+          <text x="10" y="139" fill="#93c5fd" font-size="9.5">
+            Pushed delta to 2 subscribers in 0.4ms
+          </text>
+
+          <text x="0" y="172" fill="#10b981">
+            ✓ ATOMIC FLUSH: synced to ./data/users.json
+          </text>
+
+          <text x="0" y="196" fill="#64748b">
+            [22:30:03.880] <tspan fill="#38bdf8">LISTEN</tspan> Awaiting next event loop…
+          </text>
+
+          <rect x="290" y="185" width="6" height="13" fill="#38bdf8">
+            <animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite"/>
+          </rect>
+        </g>
+      </g>
+    </g>
+
+    <!-- BOTTOM FEATURE PILLS BAR (x=45, y=456) -->
+    <g transform="translate(45, 456)">
+      <rect x="0" y="0" width="870" height="42" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+
+      <g transform="translate(18, 25)" font-family="Inter, system-ui, sans-serif" font-size="11.5" font-weight="600">
+        <text x="0" y="0" fill="#38bdf8">⚡ Real-Time Socket.IO Sync</text>
+        <text x="185" y="0" fill="#64748b">•</text>
+        <text x="205" y="0" fill="#e2e8f0">📦 Pure JSON Storage</text>
+        <text x="350" y="0" fill="#64748b">•</text>
+        <text x="370" y="0" fill="#a5b4fc">🌐 Node.js &amp; Python SDKs</text>
+        <text x="535" y="0" fill="#64748b">•</text>
+        <text x="555" y="0" fill="#34d399">🔒 Self-Hosted (No 3rd-Party Limits)</text>
+      </g>
+    </g>
+  </g>
+</svg>

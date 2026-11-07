@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JsonFlux - Marlon Sarduy Machado</title>
-    <meta name="description" content="Project focused on structured JSON/data flow tooling.">
+    <meta name="description" content="Lightweight real-time JSON database system with Socket.IO integration, in-memory indexing, and cross-platform Node.js & Python clients.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="JsonFlux - Marlon Sarduy Machado">
-    <meta property="og:description" content="Project focused on structured JSON/data flow tooling.">
+    <meta property="og:description" content="Lightweight real-time JSON database system with Socket.IO integration, in-memory indexing, and cross-platform Node.js & Python clients.">
     <meta property="og:url" content="https://userzero075.github.io/portfolio/p/jsonflux.html">
     <meta property="og:image" content="https://userzero075.github.io/portfolio/jsonflux-preview.svg">
     <meta property="og:site_name" content="Marlon Sarduy Machado - Portfolio">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JsonFlux - Marlon Sarduy Machado">
-    <meta name="twitter:description" content="Project focused on structured JSON/data flow tooling.">
+    <meta name="twitter:description" content="Lightweight real-time JSON database system with Socket.IO integration, in-memory indexing, and cross-platform Node.js & Python clients.">
     <meta name="twitter:image" content="https://userzero075.github.io/portfolio/jsonflux-preview.svg">
     <style>
         :root {
-            --bg: #09090b;
-            --card: #111827;
-            --accent: #22d3ee;
-            --accent2: #94a3b8;
+            --bg: #070a12;
+            --card: #0c1220;
+            --accent: #06b6d4;
+            --accent2: #38bdf8;
             --text: #f0f4f8;
-            --muted: #64748b;
+            --muted: #94a3b8;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
@@ -40,16 +40,20 @@
         .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease; border: 1px solid transparent; }
         .btn-github { background: rgba(255,255,255,0.08); color: var(--text); border-color: rgba(255,255,255,0.12); }
         .btn-github:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
-        .btn-page { background: var(--accent); color: #fff; }
+        .btn-page { background: var(--accent); color: #042f2e; font-weight: 600; }
         .btn-page:hover { filter: brightness(1.15); transform: translateY(-1px); }
         .btn-details { background: transparent; color: var(--muted); border-color: rgba(255,255,255,0.15); }
         .btn-details:hover { color: var(--text); border-color: var(--accent); transform: translateY(-1px); }
         .section { margin: 2rem 0; padding: 1.5rem; background: var(--card); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
         .section h2 { color: var(--accent2); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 600; }
-        .section p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
+        .section p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .section ul { list-style: none; margin: 0; padding: 0; }
+        .section li { color: var(--muted); line-height: 1.7; font-size: 0.92rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .section li:last-child { border-bottom: none; }
+        .section li strong { color: var(--text); }
         .lang-switch { position: fixed; top: 1rem; right: 1rem; z-index: 10; display: flex; gap: 0.4rem; }
         .lang-btn { background: rgba(255,255,255,0.08); color: var(--muted); border: 1px solid rgba(255,255,255,0.12); padding: 0.35rem 0.7rem; cursor: pointer; border-radius: 6px; font-size: 0.8rem; font-weight: 500; transition: all 0.2s; }
-        .lang-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .lang-btn.active { background: var(--accent); color: #042f2e; font-weight: 600; border-color: var(--accent); }
         .lang-btn:hover:not(.active) { color: var(--text); border-color: var(--accent2); }
         .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; color: var(--muted); font-size: 0.8rem; }
         @media (max-width: 600px) {
@@ -62,18 +66,34 @@
 <body>
     <div class="lang-switch"><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="es">ES</button></div>
     <div class="container">
-        <a href="../index.html" class="back-link" data-i18n="backToPortfolio">← Back to Portfolio</a>
+        <a href="../index.html#projects" class="back-link" data-i18n="backToPortfolio">← Back to Portfolio</a>
         <div class="hero">
             <img src="../jsonflux-preview.svg" alt="JsonFlux preview">
             <div class="hero-info">
                 <h1>JsonFlux</h1>
-                <p data-i18n="desc">Project focused on structured JSON/data flow tooling.</p>
+                <p data-i18n="desc">Lightweight real-time JSON database with Socket.IO synchronization. Host all your application data privately on your own server with instant event-driven updates and zero third-party cloud limits.</p>
             </div>
         </div>
         <div class="actions">
             <a href="https://github.com/UserZero075/JsonFlux" target="_blank" class="btn btn-github">GitHub</a>
-            
-            <a href="../index.html#jsonflux" class="btn btn-details">← Portfolio</a>
+            <a href="../index.html#projects" class="btn btn-details">← Portfolio</a>
+        </div>
+
+        <div class="section">
+            <h2 data-i18n="aboutTitle">About this project</h2>
+            <p data-i18n="aboutText1">JsonFlux was created to provide a lightweight, high-performance database alternative for dynamic web applications, Telegram bots, IoT devices, and rapid prototyping where traditional SQL/NoSQL cloud setups are heavy or restricted by quotas.</p>
+            <p data-i18n="aboutText2">It merges the simplicity of schema-free JSON document storage with real-time bi-directional WebSockets via Socket.IO, enabling clients to perform CRUD operations while automatically broadcasting live mutations to all subscribed applications in sub-millisecond times.</p>
+        </div>
+
+        <div class="section">
+            <h2 data-i18n="featuresTitle">Technical Highlights</h2>
+            <ul>
+                <li><strong data-i18n="f1Title">Real-Time Data Streaming:</strong> <span data-i18n="f1Desc">Native Socket.IO integration broadcasting live deltas and document updates to connected subscribers instantly.</span></li>
+                <li><strong data-i18n="f2Title">Hybrid In-Memory Storage:</strong> <span data-i18n="f2Desc">Ultra-fast in-memory document caching paired with atomic filesystem synchronization for reliable data durability.</span></li>
+                <li><strong data-i18n="f3Title">Cross-Platform SDK Ecosystem:</strong> <span data-i18n="f3Desc">Lightweight Node.js server core with native client libraries available for both Node.js/TypeScript and Python.</span></li>
+                <li><strong data-i18n="f4Title">Intuitive CRUD &amp; Query API:</strong> <span data-i18n="f4Desc">Simple model creation, key-value lookups, filtered queries, and real-time event listeners.</span></li>
+                <li><strong data-i18n="f5Title">100% Self-Hosted &amp; Private:</strong> <span data-i18n="f5Desc">Zero external telemetry, zero paid cloud tiers, and complete ownership of your data on VPS or bare metal.</span></li>
+            </ul>
         </div>
     </div>
     <div class="footer">Marlon Sarduy Machado · UserZero075</div>
@@ -81,13 +101,39 @@
         const translations = {
             en: {
                 backToPortfolio: "← Back to Portfolio",
-                aboutProject: "About this project",
-                desc: "Project focused on structured JSON/data flow tooling."
+                desc: "Lightweight real-time JSON database with Socket.IO synchronization. Host all your application data privately on your own server with instant event-driven updates and zero third-party cloud limits.",
+                aboutTitle: "About this project",
+                aboutText1: "JsonFlux was created to provide a lightweight, high-performance database alternative for dynamic web applications, Telegram bots, IoT devices, and rapid prototyping where traditional SQL/NoSQL cloud setups are heavy or restricted by quotas.",
+                aboutText2: "It merges the simplicity of schema-free JSON document storage with real-time bi-directional WebSockets via Socket.IO, enabling clients to perform CRUD operations while automatically broadcasting live mutations to all subscribed applications in sub-millisecond times.",
+                featuresTitle: "Technical Highlights",
+                f1Title: "Real-Time Data Streaming:",
+                f1Desc: "Native Socket.IO integration broadcasting live deltas and document updates to connected subscribers instantly.",
+                f2Title: "Hybrid In-Memory Storage:",
+                f2Desc: "Ultra-fast in-memory document caching paired with atomic filesystem synchronization for reliable data durability.",
+                f3Title: "Cross-Platform SDK Ecosystem:",
+                f3Desc: "Lightweight Node.js server core with native client libraries available for both Node.js/TypeScript and Python.",
+                f4Title: "Intuitive CRUD & Query API:",
+                f4Desc: "Simple model creation, key-value lookups, filtered queries, and real-time event listeners.",
+                f5Title: "100% Self-Hosted & Private:",
+                f5Desc: "Zero external telemetry, zero paid cloud tiers, and complete ownership of your data on VPS or bare metal."
             },
             es: {
                 backToPortfolio: "← Volver al Portfolio",
-                aboutProject: "Sobre este proyecto",
-                desc: "Proyecto enfocado en herramientas de flujo de datos y JSON estructurado."
+                desc: "Base de datos JSON ligera en tiempo real con sincronización Socket.IO. Aloja los datos de tus aplicaciones de forma privada en tu propio servidor con actualizaciones en vivo y sin límites de terceros.",
+                aboutTitle: "Sobre este proyecto",
+                aboutText1: "JsonFlux nació para ofrecer una alternativa de base de datos ligera y de alto rendimiento para aplicaciones web dinámicas, bots de Telegram, IoT y prototipado rápido donde las bases de datos SQL/NoSQL tradicionales resultan pesadas o limitadas por cuotas.",
+                aboutText2: "Combina la simplicidad del almacenamiento de documentos JSON sin esquemas con WebSockets bidireccionales en tiempo real vía Socket.IO, permitiendo ejecutar operaciones CRUD y propagar mutaciones en vivo a todos los clientes suscritos en submilisegundos.",
+                featuresTitle: "Aspectos Técnicos Destacados",
+                f1Title: "Streaming de Datos en Tiempo Real:",
+                f1Desc: "Integración nativa con Socket.IO para emitir deltas y cambios de documentos a todos los clientes suscritos al instante.",
+                f2Title: "Almacenamiento Híbrido en Memoria:",
+                f2Desc: "Indexación ultrarrápida en memoria RAM combinada con persistencia atómica en disco para máxima durabilidad.",
+                f3Title: "Ecosistema Multiplataforma:",
+                f3Desc: "Servidor central en Node.js con librerías cliente oficiales tanto para Node.js/TypeScript como para Python.",
+                f4Title: "API Intuitiva para CRUD y Consultas:",
+                f4Desc: "Gestión sencilla de modelos, consultas por clave-valor, filtros y escuchadores de eventos reactivos.",
+                f5Title: "100% Autohospedado y Privado:",
+                f5Desc: "Sin telemetría externa ni servicios de pago de terceros; control total de la infraestructura en tu propia VPS o servidor."
             }
         };
         function initI18n() {
