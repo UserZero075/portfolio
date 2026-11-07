@@ -61,6 +61,25 @@
             .hero img { width: 100%; height: auto; }
             .hero-info h1 { font-size: 1.3rem; }
         }
+
+        /* Release & Changelog Styles */
+        .release-section { border-left: 3px solid var(--accent); }
+        .release-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.85rem; }
+        .release-tag-title { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+        .release-badge { background: rgba(255,255,255,0.06); color: var(--accent); border: 1px solid var(--accent); padding: 0.2rem 0.65rem; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 700; }
+        .release-meta { font-size: 0.82rem; color: var(--muted); }
+        .release-link { color: var(--accent2); text-decoration: none; font-weight: 500; }
+        .release-link:hover { text-decoration: underline; color: var(--accent); }
+        .release-body { font-size: 0.92rem; line-height: 1.7; color: var(--muted); }
+        .release-body h2, .release-body h3, .release-body h4 { color: var(--text); margin: 1.1rem 0 0.5rem; font-size: 1rem; font-weight: 600; }
+        .release-body h2:first-child, .release-body h3:first-child { margin-top: 0; }
+        .release-body ul { list-style: disc; padding-left: 1.4rem; margin: 0.5rem 0 0.9rem; }
+        .release-body li { padding: 0.2rem 0; color: var(--muted); border-bottom: none; }
+        .release-body li strong { color: var(--text); }
+        .release-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; background: rgba(255,255,255,0.06); padding: 0.15rem 0.35rem; border-radius: 4px; color: var(--accent2); }
+        .release-body pre { background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+        .release-body p { margin-bottom: 0.75rem; }
+
     </style>
 </head>
 <body>
@@ -77,6 +96,7 @@
         <div class="actions">
             <a href="https://github.com/UserZero075/JsonFlux" target="_blank" class="btn btn-github">GitHub</a>
             <a href="../index.html#projects" class="btn btn-details">← Portfolio</a>
+            <a href="https://github.com/UserZero075/JsonFlux/releases/tag/v2.0.0" target="_blank" class="btn btn-page" id="header-release-btn">Release v2.0.0</a>
         </div>
 
         <div class="section">
@@ -95,12 +115,117 @@
                 <li><strong data-i18n="f5Title">100% Self-Hosted &amp; Private:</strong> <span data-i18n="f5Desc">Zero external telemetry, zero paid cloud tiers, and complete ownership of your data on VPS or bare metal.</span></li>
             </ul>
         </div>
+        <div class="section release-section" id="latest-release-section" data-github-repo="UserZero075/JsonFlux">
+            <div class="release-header">
+                <div class="release-tag-title">
+                    <span class="release-badge" id="release-tag">v2.0.0</span>
+                    <h2 class="release-title" id="release-name" style="margin-bottom:0;" data-i18n="latestReleaseTitle">Latest Release &amp; Changelog</h2>
+                </div>
+                <div class="release-meta">
+                    <span class="release-date" id="release-date">Released: 2026-11-07</span> • 
+                    <a href="https://github.com/UserZero075/JsonFlux/releases/tag/v2.0.0" target="_blank" rel="noopener noreferrer" class="release-link" id="release-url" data-i18n="viewRelease">View on GitHub ↗</a>
+                </div>
+            </div>
+            <div class="release-body" id="release-body">
+<h2>🚀 Novedades y Mejoras Clave de JsonFlux v2.0.0</h2>
+<h3>1. 🛡️ Persistencia Atómica Crash-Safe</h3>
+<ul>
+<li><strong>Escrituras atómicas garantizadas:</strong> Implementación de guardado seguro mediante archivos temporales y renombramiento atómico POSIX (<code>renameSync</code>), complementado con copias de respaldo continuas (<code>.bak</code>).</li>
+<li><strong>Flush garantizado en apagado:</strong> Manejadores de señal <code>SIGINT</code>, <code>SIGTERM</code>, <code>beforeExit</code> y <code>exit</code> que aseguran el volcado síncrono a disco antes del cierre con 0% pérdida de datos.</li>
+<li><strong>Bandera <code>_isDirty</code>:</strong> Evita escrituras en disco innecesarias o periódicas cuando no se han modificado datos.</li>
+</ul>
+<h3>2. ⚡ Indexación en Memoria O(1) y Corrección de Bugs Críticos</h3>
+<ul>
+<li><strong>Fix Fatal de Esquemas tras Reinicio:</strong> Corregido el bug donde el servidor perdía los esquemas y bloqueaba toda inserción futura exigiendo <code>index</code> en el payload. Ahora los esquemas, reglas <code>unique</code> y contadores se preservan íntegros en <code>__METADATA__</code>.</li>
+<li><strong>Fix Crítico en <code>destroy()</code>:</strong> Corregido el acceso incorrecto a resultados de búsqueda única que impedía la eliminación de registros.</li>
+<li><strong>Búsquedas O(1):</strong> Mapeo de índices en memoria para consultas instantáneas por identificador primario y claves únicas sin deserializar colecciones enteras.</li>
+</ul>
+<h3>3. 🔄 Arquitectura Reactiva en Tiempo Real (Real-Time Flux)</h3>
+<ul>
+<li><strong>Sistema Pub/Sub nativo:</strong> Suscripción granular a modelos vía WebSockets (<code>subscribe</code>, <code>unsubscribe</code>).</li>
+<li><strong>Difusión en vivo:</strong> Emisión instantánea de mutaciones (<code>flux:change</code>) a todos los clientes conectados en submilisegundos.</li>
+</ul>
+<h3>4. 🔀 Concurrencia Masiva sin Colisiones (Request ID Correlation)</h3>
+<ul>
+<li><strong>Eliminación de Race Conditions:</strong> Integración de identificadores de correlación <code>reqId</code> y callbacks nativos Socket.IO ACK.</li>
+<li>Soporte total para miles de operaciones paralelas en <code>Promise.all</code> (Node.js) y <code>asyncio.gather</code> (Python) sin cruce de respuestas ni promesas colisionadas.</li>
+</ul>
+<h3>5. 🔍 Operadores de Consulta Avanzados</h3>
+<ul>
+<li>Soporte para operadores enriquecidos: <code>$eq</code>, <code>$ne</code>, <code>$gt</code>, <code>$gte</code>, <code>$lt</code>, <code>$lte</code>, <code>$in</code>, <code>$nin</code>, <code>$contains</code> y <code>$regex</code>.</li>
+<li>Paginación y ordenamiento integrados (<code>limit</code>, <code>skip</code>, <code>sort</code>).</li>
+</ul>
+<h3>6. 🔒 Seguridad y Control de Acceso</h3>
+<ul>
+<li>Autenticación opcional mediante Token / API Key (<code>--token</code> o variable <code>JSONFLUX_TOKEN</code>) en endpoints REST y handshakes Socket.IO.</li>
+<li>Saneamiento y protección activa contra ataques de Prototype Pollution.</li>
+</ul>
+<h3>7. 📦 SDKs Actualizados para Node.js y Python</h3>
+<ul>
+<li><strong>Node.js (<code>JsonFluxClient</code>):</strong> API limpia tipo ORM, reconexión automática y retrocompatibilidad con <code>.DB()</code>.</li>
+<li><strong>Python (<code>JsonFluxClient</code>):</strong> Soporte de gestor de contexto <code>async with</code>, métodos tipados y suscripciones reactivas.</li>
+</ul>
+<h3>📊 Benchmark de Estrés (10.000 operaciones concurrentes)</h3>
+<ul>
+<li><strong>10.000 operaciones simultáneas</strong> completadas en <strong>2,58 segundos</strong> (~3.874 ops/seg).</li>
+<li>100% integridad de datos validada con cero fugas de memoria.</li>
+</ul>
+            </div>
+        </div>
+            <div class="release-body" id="release-body">
+<h2>🚀 Novedades y Mejoras Clave de JsonFlux v2.0.0</h2>
+<h3>1. 🛡️ Persistencia Atómica Crash-Safe</h3>
+<ul>
+<li><strong>Escrituras atómicas garantizadas:</strong> Implementación de guardado seguro mediante archivos temporales y renombramiento atómico POSIX (<code>renameSync</code>), complementado con copias de respaldo continuas (<code>.bak</code>).</li>
+<li><strong>Flush garantizado en apagado:</strong> Manejadores de señal <code>SIGINT</code>, <code>SIGTERM</code>, <code>beforeExit</code> y <code>exit</code> que aseguran el volcado síncrono a disco antes del cierre con 0% pérdida de datos.</li>
+<li><strong>Bandera <code>_isDirty</code>:</strong> Evita escrituras en disco innecesarias o periódicas cuando no se han modificado datos.</li>
+</ul>
+<h3>2. ⚡ Indexación en Memoria O(1) y Corrección de Bugs Críticos</h3>
+<ul>
+<li><strong>Fix Fatal de Esquemas tras Reinicio:</strong> Corregido el bug donde el servidor perdía los esquemas y bloqueaba toda inserción futura exigiendo <code>index</code> en el payload. Ahora los esquemas, reglas <code>unique</code> y contadores se preservan íntegros en <code>__METADATA__</code>.</li>
+<li><strong>Fix Crítico en <code>destroy()</code>:</strong> Corregido el acceso incorrecto a resultados de búsqueda única que impedía la eliminación de registros.</li>
+<li><strong>Búsquedas O(1):</strong> Mapeo de índices en memoria para consultas instantáneas por identificador primario y claves únicas sin deserializar colecciones enteras.</li>
+</ul>
+<h3>3. 🔄 Arquitectura Reactiva en Tiempo Real (Real-Time Flux)</h3>
+<ul>
+<li><strong>Sistema Pub/Sub nativo:</strong> Suscripción granular a modelos vía WebSockets (<code>subscribe</code>, <code>unsubscribe</code>).</li>
+<li><strong>Difusión en vivo:</strong> Emisión instantánea de mutaciones (<code>flux:change</code>) a todos los clientes conectados en submilisegundos.</li>
+</ul>
+<h3>4. 🔀 Concurrencia Masiva sin Colisiones (Request ID Correlation)</h3>
+<ul>
+<li><strong>Eliminación de Race Conditions:</strong> Integración de identificadores de correlación <code>reqId</code> y callbacks nativos Socket.IO ACK.</li>
+<li>Soporte total para miles de operaciones paralelas en <code>Promise.all</code> (Node.js) y <code>asyncio.gather</code> (Python) sin cruce de respuestas ni promesas colisionadas.</li>
+</ul>
+<h3>5. 🔍 Operadores de Consulta Avanzados</h3>
+<ul>
+<li>Soporte para operadores enriquecidos: <code>$eq</code>, <code>$ne</code>, <code>$gt</code>, <code>$gte</code>, <code>$lt</code>, <code>$lte</code>, <code>$in</code>, <code>$nin</code>, <code>$contains</code> y <code>$regex</code>.</li>
+<li>Paginación y ordenamiento integrados (<code>limit</code>, <code>skip</code>, <code>sort</code>).</li>
+</ul>
+<h3>6. 🔒 Seguridad y Control de Acceso</h3>
+<ul>
+<li>Autenticación opcional mediante Token / API Key (<code>--token</code> o variable <code>JSONFLUX_TOKEN</code>) en endpoints REST y handshakes Socket.IO.</li>
+<li>Saneamiento y protección activa contra ataques de Prototype Pollution.</li>
+</ul>
+<h3>7. 📦 SDKs Actualizados para Node.js y Python</h3>
+<ul>
+<li><strong>Node.js (<code>JsonFluxClient</code>):</strong> API limpia tipo ORM, reconexión automática y retrocompatibilidad con <code>.DB()</code>.</li>
+<li><strong>Python (<code>JsonFluxClient</code>):</strong> Soporte de gestor de contexto <code>async with</code>, métodos tipados y suscripciones reactivas.</li>
+</ul>
+<h3>📊 Benchmark de Estrés (10.000 operaciones concurrentes)</h3>
+<ul>
+<li><strong>10.000 operaciones simultáneas</strong> completadas en <strong>2,58 segundos</strong> (~3.874 ops/seg).</li>
+<li>100% integridad de datos validada con cero fugas de memoria.</li>
+</ul>
+            </div>
+        </div>
     </div>
     <div class="footer">Marlon Sarduy Machado · UserZero075</div>
     <script>
         const translations = {
             en: {
                 backToPortfolio: "← Back to Portfolio",
+                latestReleaseTitle: "Latest Release & Changelog",
+                viewRelease: "View on GitHub ↗",
                 desc: "Lightweight real-time JSON database with Socket.IO synchronization. Host all your application data privately on your own server with instant event-driven updates and zero third-party cloud limits.",
                 aboutTitle: "About this project",
                 aboutText1: "JsonFlux was created to provide a lightweight, high-performance database alternative for dynamic web applications, Telegram bots, IoT devices, and rapid prototyping where traditional SQL/NoSQL cloud setups are heavy or restricted by quotas.",
@@ -119,6 +244,8 @@
             },
             es: {
                 backToPortfolio: "← Volver al Portfolio",
+                latestReleaseTitle: "Última Versión & Changelog",
+                viewRelease: "Ver en GitHub ↗",
                 desc: "Base de datos JSON ligera en tiempo real con sincronización Socket.IO. Aloja los datos de tus aplicaciones de forma privada en tu propio servidor con actualizaciones en vivo y sin límites de terceros.",
                 aboutTitle: "Sobre este proyecto",
                 aboutText1: "JsonFlux nació para ofrecer una alternativa de base de datos ligera y de alto rendimiento para aplicaciones web dinámicas, bots de Telegram, IoT y prototipado rápido donde las bases de datos SQL/NoSQL tradicionales resultan pesadas o limitadas por cuotas.",
@@ -142,9 +269,191 @@
             document.querySelectorAll('[data-i18n]').forEach(e => { let k = e.getAttribute('data-i18n'); if (translations[l][k]) e.textContent = translations[l][k]; });
         }
         document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
-            let l = b.dataset.lang; localStorage.setItem('portfolio_lang', l); initI18n();
-        }));
+            let l = b.dataset.lang; localStorage.setItem('portfolio_lang', l); 
+        function renderMarkdown(md) {
+            if (!md) return '';
+            let html = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            html = html.replace(/```([a-z]*)\n([\s\S]*?)```/g, (match, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="release-link">$1</a>');
+            const lines = html.split('\n');
+            let inList = false;
+            let result = [];
+            for (let line of lines) {
+                const listMatch = line.match(/^(\s*)[-*]\s+(.*)$/);
+                if (listMatch) {
+                    if (!inList) { result.push('<ul>'); inList = true; }
+                    result.push(`<li>${listMatch[2]}</li>`);
+                } else {
+                    if (inList) { result.push('</ul>'); inList = false; }
+                    const trimmed = line.trim();
+                    if (trimmed.length > 0 && !trimmed.startsWith('<h') && !trimmed.startsWith('<pre')) {
+                        result.push(`<p>${trimmed}</p>`);
+                    } else if (trimmed.length > 0) {
+                        result.push(trimmed);
+                    }
+                }
+            }
+            if (inList) result.push('</ul>');
+            return result.join('\n');
+        }
+
+        async function loadDynamicRelease() {
+            const section = document.getElementById('latest-release-section');
+            if (!section) return;
+            const repo = section.dataset.githubRepo;
+            if (!repo) return;
+
+            try {
+                let res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
+                    headers: { 'Accept': 'application/vnd.github+json' }
+                });
+                let release;
+                if (res.ok) {
+                    release = await res.json();
+                } else {
+                    const listRes = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                        headers: { 'Accept': 'application/vnd.github+json' }
+                    });
+                    if (listRes.ok) {
+                        const list = await listRes.json();
+                        if (list && list.length > 0) release = list[0];
+                    }
+                }
+
+                if (!release) return;
+
+                const tagEl = document.getElementById('release-tag');
+                const nameEl = document.getElementById('release-name');
+                const dateEl = document.getElementById('release-date');
+                const urlEl = document.getElementById('release-url');
+                const bodyEl = document.getElementById('release-body');
+                const actionBtn = document.getElementById('header-release-btn');
+
+                if (tagEl && release.tag_name) tagEl.textContent = release.tag_name;
+                if (nameEl && release.name) nameEl.textContent = release.name;
+                if (dateEl && release.published_at) {
+                    const d = new Date(release.published_at);
+                    const dateStr = d.toISOString().split('T')[0];
+                    const isEs = (localStorage.getItem('portfolio_lang') || 'en') === 'es';
+                    dateEl.textContent = (isEs ? 'Publicado: ' : 'Released: ') + dateStr;
+                }
+                if (urlEl && release.html_url) {
+                    urlEl.href = release.html_url;
+                }
+                if (actionBtn && release.html_url) {
+                    actionBtn.href = release.html_url;
+                    if (release.tag_name) {
+                        actionBtn.textContent = `Release ${release.tag_name}`;
+                    }
+                }
+                if (bodyEl && release.body && release.body.trim()) {
+                    bodyEl.innerHTML = renderMarkdown(release.body);
+                }
+            } catch (e) {
+                // Preserves pre-rendered static changelog on rate-limit / offline
+            }
+        }
+
         initI18n();
+        loadDynamicRelease();
+        }));
+        
+        function renderMarkdown(md) {
+            if (!md) return '';
+            let html = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            html = html.replace(/```([a-z]*)\n([\s\S]*?)```/g, (match, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="release-link">$1</a>');
+            const lines = html.split('\n');
+            let inList = false;
+            let result = [];
+            for (let line of lines) {
+                const listMatch = line.match(/^(\s*)[-*]\s+(.*)$/);
+                if (listMatch) {
+                    if (!inList) { result.push('<ul>'); inList = true; }
+                    result.push(`<li>${listMatch[2]}</li>`);
+                } else {
+                    if (inList) { result.push('</ul>'); inList = false; }
+                    const trimmed = line.trim();
+                    if (trimmed.length > 0 && !trimmed.startsWith('<h') && !trimmed.startsWith('<pre')) {
+                        result.push(`<p>${trimmed}</p>`);
+                    } else if (trimmed.length > 0) {
+                        result.push(trimmed);
+                    }
+                }
+            }
+            if (inList) result.push('</ul>');
+            return result.join('\n');
+        }
+
+        async function loadDynamicRelease() {
+            const section = document.getElementById('latest-release-section');
+            if (!section) return;
+            const repo = section.dataset.githubRepo;
+            if (!repo) return;
+
+            try {
+                let res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
+                    headers: { 'Accept': 'application/vnd.github+json' }
+                });
+                let release;
+                if (res.ok) {
+                    release = await res.json();
+                } else {
+                    const listRes = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                        headers: { 'Accept': 'application/vnd.github+json' }
+                    });
+                    if (listRes.ok) {
+                        const list = await listRes.json();
+                        if (list && list.length > 0) release = list[0];
+                    }
+                }
+
+                if (!release) return;
+
+                const tagEl = document.getElementById('release-tag');
+                const nameEl = document.getElementById('release-name');
+                const dateEl = document.getElementById('release-date');
+                const urlEl = document.getElementById('release-url');
+                const bodyEl = document.getElementById('release-body');
+                const actionBtn = document.getElementById('header-release-btn');
+
+                if (tagEl && release.tag_name) tagEl.textContent = release.tag_name;
+                if (nameEl && release.name) nameEl.textContent = release.name;
+                if (dateEl && release.published_at) {
+                    const d = new Date(release.published_at);
+                    const dateStr = d.toISOString().split('T')[0];
+                    const isEs = (localStorage.getItem('portfolio_lang') || 'en') === 'es';
+                    dateEl.textContent = (isEs ? 'Publicado: ' : 'Released: ') + dateStr;
+                }
+                if (urlEl && release.html_url) {
+                    urlEl.href = release.html_url;
+                }
+                if (actionBtn && release.html_url) {
+                    actionBtn.href = release.html_url;
+                    if (release.tag_name) {
+                        actionBtn.textContent = `Release ${release.tag_name}`;
+                    }
+                }
+                if (bodyEl && release.body && release.body.trim()) {
+                    bodyEl.innerHTML = renderMarkdown(release.body);
+                }
+            } catch (e) {
+                // Preserves pre-rendered static changelog on rate-limit / offline
+            }
+        }
+
+        initI18n();
+        loadDynamicRelease();
     </script>
 </body>
 </html>

@@ -61,6 +61,25 @@
             .hero img { width: 100%; height: auto; }
             .hero-info h1 { font-size: 1.3rem; }
         }
+
+        /* Release & Changelog Styles */
+        .release-section { border-left: 3px solid var(--accent); }
+        .release-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.85rem; }
+        .release-tag-title { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+        .release-badge { background: rgba(255,255,255,0.06); color: var(--accent); border: 1px solid var(--accent); padding: 0.2rem 0.65rem; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 700; }
+        .release-meta { font-size: 0.82rem; color: var(--muted); }
+        .release-link { color: var(--accent2); text-decoration: none; font-weight: 500; }
+        .release-link:hover { text-decoration: underline; color: var(--accent); }
+        .release-body { font-size: 0.92rem; line-height: 1.7; color: var(--muted); }
+        .release-body h2, .release-body h3, .release-body h4 { color: var(--text); margin: 1.1rem 0 0.5rem; font-size: 1rem; font-weight: 600; }
+        .release-body h2:first-child, .release-body h3:first-child { margin-top: 0; }
+        .release-body ul { list-style: disc; padding-left: 1.4rem; margin: 0.5rem 0 0.9rem; }
+        .release-body li { padding: 0.2rem 0; color: var(--muted); border-bottom: none; }
+        .release-body li strong { color: var(--text); }
+        .release-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; background: rgba(255,255,255,0.06); padding: 0.15rem 0.35rem; border-radius: 4px; color: var(--accent2); }
+        .release-body pre { background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+        .release-body p { margin-bottom: 0.75rem; }
+
     </style>
 </head>
 <body>
@@ -76,7 +95,7 @@
         </div>
         <div class="actions">
             <a href="https://github.com/UserZero075/webconsole" target="_blank" class="btn btn-github">GitHub</a>
-            <a href="https://github.com/UserZero075/webconsole/releases/tag/v1.0.0" target="_blank" class="btn btn-page">Release v1.0.0</a>
+            <a href="https://github.com/UserZero075/webconsole/releases/tag/v1.3.0" target="_blank" class="btn btn-page" id="header-release-btn">Release v1.3.0</a>
             <a href="../index.html#projects" class="btn btn-details">← Portfolio</a>
         </div>
 
@@ -96,12 +115,79 @@
                 <li><strong data-i18n="f5Title">Zero-Friction Tailscale Serve:</strong> <span data-i18n="f5Desc">Accessible from any browser (desktop, tablet, mobile) with touch gestures and visual viewport keyboard handling, zero third-party dependencies.</span></li>
             </ul>
         </div>
+        <div class="section release-section" id="latest-release-section" data-github-repo="UserZero075/webconsole">
+            <div class="release-header">
+                <div class="release-tag-title">
+                    <span class="release-badge" id="release-tag">v1.3.0</span>
+                    <h2 class="release-title" id="release-name" style="margin-bottom:0;" data-i18n="latestReleaseTitle">Latest Release &amp; Changelog</h2>
+                </div>
+                <div class="release-meta">
+                    <span class="release-date" id="release-date">Released: 2026-10-27</span> • 
+                    <a href="https://github.com/UserZero075/webconsole/releases/tag/v1.3.0" target="_blank" rel="noopener noreferrer" class="release-link" id="release-url" data-i18n="viewRelease">View on GitHub ↗</a>
+                </div>
+            </div>
+            <div class="release-body" id="release-body">
+<h2>WebConsole v1.3.0</h2>
+<p>Esta versión incorpora la <strong>PR #2 — Expand workspace tools and improve terminal workflows</strong>, mergeada en <code>main</code> después de v1.2.0.</p>
+<h3>Workspace y explorador</h3>
+<ul>
+<li><strong>Búsqueda dentro de archivos</strong> además del filtro por nombre, con opciones de mayúsculas/minúsculas, palabra completa, expresiones regulares y patrones para incluir/excluir rutas. La búsqueda aplica límites de tamaño y complejidad para evitar bloquear el servidor.</li>
+<li><strong>Pestañas del inspector</strong> para Explorer, Agent History, Git y mensajes, con estado persistente, accesibilidad por teclado y visibilidad ajustable de los paneles laterales.</li>
+<li><strong>Historial de agentes</strong> con alcance de workspace, proyecto o todas las sesiones registradas; es un índice de sesiones, no de transcripciones.</li>
+<li><strong>Source Control ampliado:</strong> ver cambios preparados y sin preparar, preparar/quitar del stage por archivo o grupo, revisar diffs e historial, descartar cambios y crear commits. Se añaden estadísticas de cambios y acciones para actualizar ramas remotas.</li>
+<li><strong>Creación de Pull Requests desde el workspace</strong> para repositorios GitHub compatibles.</li>
+</ul>
+<h3>Estado de agentes y OpenCode</h3>
+<ul>
+<li>Indicadores distinguen eventos confirmados de actividad o permisos estimados; la presencia de un proceso o una pantalla silenciosa no se presenta como finalización confirmada.</li>
+<li><strong>Notificaciones del navegador opcionales</strong> para nuevos eventos relevantes, con permiso explícito del usuario y deduplicación persistente.</li>
+<li>Integración OpenCode reorganizada para consumir eventos de sesión y detectar actividad, finalización, interrupciones, errores y solicitudes de permiso; se recupera ante desconexiones.</li>
+</ul>
+<h3>Terminal y seguridad</h3>
+<ul>
+<li>Mejoras en entrada local, pegado desde el portapapeles y renderizado WebGL de xterm.</li>
+<li>Mejoras de densidad y controles del workspace, además de ajustes en los flujos de terminal y en la observación de estado.</li>
+<li>Las operaciones de búsqueda y Git se limitan al workspace y validan las acciones del servidor; la búsqueda regex y los filtros tienen cotas de complejidad.</li>
+</ul>
+<h3>Validación</h3>
+<p>La PR reportó <strong>110 pruebas Python</strong> y <strong>77 pruebas frontend Node</strong>. En una verificación adicional sobre el servidor de release, las 77 frontend pasaron; tres nuevas pruebas Python no pudieron inicializar sus repositorios porque el Git local es 2.25.1 y no admite <code>git init -b</code> (107 pruebas Python sí pasaron). Esas tres pruebas fueron reportadas como pasadas por la PR en su entorno.</p>
+            </div>
+        </div>
+            <div class="release-body" id="release-body">
+<h2>WebConsole v1.3.0</h2>
+<p>Esta versión incorpora la <strong>PR #2 — Expand workspace tools and improve terminal workflows</strong>, mergeada en <code>main</code> después de v1.2.0.</p>
+<h3>Workspace y explorador</h3>
+<ul>
+<li><strong>Búsqueda dentro de archivos</strong> además del filtro por nombre, con opciones de mayúsculas/minúsculas, palabra completa, expresiones regulares y patrones para incluir/excluir rutas. La búsqueda aplica límites de tamaño y complejidad para evitar bloquear el servidor.</li>
+<li><strong>Pestañas del inspector</strong> para Explorer, Agent History, Git y mensajes, con estado persistente, accesibilidad por teclado y visibilidad ajustable de los paneles laterales.</li>
+<li><strong>Historial de agentes</strong> con alcance de workspace, proyecto o todas las sesiones registradas; es un índice de sesiones, no de transcripciones.</li>
+<li><strong>Source Control ampliado:</strong> ver cambios preparados y sin preparar, preparar/quitar del stage por archivo o grupo, revisar diffs e historial, descartar cambios y crear commits. Se añaden estadísticas de cambios y acciones para actualizar ramas remotas.</li>
+<li><strong>Creación de Pull Requests desde el workspace</strong> para repositorios GitHub compatibles.</li>
+</ul>
+<h3>Estado de agentes y OpenCode</h3>
+<ul>
+<li>Indicadores distinguen eventos confirmados de actividad o permisos estimados; la presencia de un proceso o una pantalla silenciosa no se presenta como finalización confirmada.</li>
+<li><strong>Notificaciones del navegador opcionales</strong> para nuevos eventos relevantes, con permiso explícito del usuario y deduplicación persistente.</li>
+<li>Integración OpenCode reorganizada para consumir eventos de sesión y detectar actividad, finalización, interrupciones, errores y solicitudes de permiso; se recupera ante desconexiones.</li>
+</ul>
+<h3>Terminal y seguridad</h3>
+<ul>
+<li>Mejoras en entrada local, pegado desde el portapapeles y renderizado WebGL de xterm.</li>
+<li>Mejoras de densidad y controles del workspace, además de ajustes en los flujos de terminal y en la observación de estado.</li>
+<li>Las operaciones de búsqueda y Git se limitan al workspace y validan las acciones del servidor; la búsqueda regex y los filtros tienen cotas de complejidad.</li>
+</ul>
+<h3>Validación</h3>
+<p>La PR reportó <strong>110 pruebas Python</strong> y <strong>77 pruebas frontend Node</strong>. En una verificación adicional sobre el servidor de release, las 77 frontend pasaron; tres nuevas pruebas Python no pudieron inicializar sus repositorios porque el Git local es 2.25.1 y no admite <code>git init -b</code> (107 pruebas Python sí pasaron). Esas tres pruebas fueron reportadas como pasadas por la PR en su entorno.</p>
+            </div>
+        </div>
     </div>
     <div class="footer">Marlon Sarduy Machado · UserZero075</div>
     <script>
         const translations = {
             en: {
                 backToPortfolio: "← Back to Portfolio",
+                latestReleaseTitle: "Latest Release & Changelog",
+                viewRelease: "View on GitHub ↗",
                 desc: "Private web workspace for Tailscale: manage projects, Git branches & isolated worktrees, code/markdown editor, and persistent AI coding agents in tmux with inter-agent MCP communication.",
                 aboutTitle: "About this project",
                 aboutText1: "WebConsole is an autonomous, private server workbench accessible directly over Tailscale. It eliminates the fragility of running AI coding agents (OpenCode, Codex, Hermes) in remote terminals by isolating each process inside dedicated, unkillable tmux sessions.",
@@ -120,6 +206,8 @@
             },
             es: {
                 backToPortfolio: "← Volver al Portfolio",
+                latestReleaseTitle: "Última Versión & Changelog",
+                viewRelease: "Ver en GitHub ↗",
                 desc: "Workspace web privado para Tailscale: gestión de proyectos, ramas y worktrees Git aislados, editor de código y agentes AI persistentes en sesiones tmux con comunicación inter-agente MCP.",
                 aboutTitle: "Sobre este proyecto",
                 aboutText1: "WebConsole es un espacio de trabajo privado en servidor accesible directamente a través de Tailscale. Elimina la fragilidad de ejecutar agentes de código (OpenCode, Codex, Hermes) en terminales remotas aislando cada proceso en sesiones tmux persistentes.",
@@ -143,9 +231,191 @@
             document.querySelectorAll('[data-i18n]').forEach(e => { let k = e.getAttribute('data-i18n'); if (translations[l][k]) e.textContent = translations[l][k]; });
         }
         document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
-            let l = b.dataset.lang; localStorage.setItem('portfolio_lang', l); initI18n();
-        }));
+            let l = b.dataset.lang; localStorage.setItem('portfolio_lang', l); 
+        function renderMarkdown(md) {
+            if (!md) return '';
+            let html = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            html = html.replace(/```([a-z]*)\n([\s\S]*?)```/g, (match, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="release-link">$1</a>');
+            const lines = html.split('\n');
+            let inList = false;
+            let result = [];
+            for (let line of lines) {
+                const listMatch = line.match(/^(\s*)[-*]\s+(.*)$/);
+                if (listMatch) {
+                    if (!inList) { result.push('<ul>'); inList = true; }
+                    result.push(`<li>${listMatch[2]}</li>`);
+                } else {
+                    if (inList) { result.push('</ul>'); inList = false; }
+                    const trimmed = line.trim();
+                    if (trimmed.length > 0 && !trimmed.startsWith('<h') && !trimmed.startsWith('<pre')) {
+                        result.push(`<p>${trimmed}</p>`);
+                    } else if (trimmed.length > 0) {
+                        result.push(trimmed);
+                    }
+                }
+            }
+            if (inList) result.push('</ul>');
+            return result.join('\n');
+        }
+
+        async function loadDynamicRelease() {
+            const section = document.getElementById('latest-release-section');
+            if (!section) return;
+            const repo = section.dataset.githubRepo;
+            if (!repo) return;
+
+            try {
+                let res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
+                    headers: { 'Accept': 'application/vnd.github+json' }
+                });
+                let release;
+                if (res.ok) {
+                    release = await res.json();
+                } else {
+                    const listRes = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                        headers: { 'Accept': 'application/vnd.github+json' }
+                    });
+                    if (listRes.ok) {
+                        const list = await listRes.json();
+                        if (list && list.length > 0) release = list[0];
+                    }
+                }
+
+                if (!release) return;
+
+                const tagEl = document.getElementById('release-tag');
+                const nameEl = document.getElementById('release-name');
+                const dateEl = document.getElementById('release-date');
+                const urlEl = document.getElementById('release-url');
+                const bodyEl = document.getElementById('release-body');
+                const actionBtn = document.getElementById('header-release-btn');
+
+                if (tagEl && release.tag_name) tagEl.textContent = release.tag_name;
+                if (nameEl && release.name) nameEl.textContent = release.name;
+                if (dateEl && release.published_at) {
+                    const d = new Date(release.published_at);
+                    const dateStr = d.toISOString().split('T')[0];
+                    const isEs = (localStorage.getItem('portfolio_lang') || 'en') === 'es';
+                    dateEl.textContent = (isEs ? 'Publicado: ' : 'Released: ') + dateStr;
+                }
+                if (urlEl && release.html_url) {
+                    urlEl.href = release.html_url;
+                }
+                if (actionBtn && release.html_url) {
+                    actionBtn.href = release.html_url;
+                    if (release.tag_name) {
+                        actionBtn.textContent = `Release ${release.tag_name}`;
+                    }
+                }
+                if (bodyEl && release.body && release.body.trim()) {
+                    bodyEl.innerHTML = renderMarkdown(release.body);
+                }
+            } catch (e) {
+                // Preserves pre-rendered static changelog on rate-limit / offline
+            }
+        }
+
         initI18n();
+        loadDynamicRelease();
+        }));
+        
+        function renderMarkdown(md) {
+            if (!md) return '';
+            let html = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            html = html.replace(/```([a-z]*)\n([\s\S]*?)```/g, (match, lang, code) => `<pre><code>${code.trim()}</code></pre>`);
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+            html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+            html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="release-link">$1</a>');
+            const lines = html.split('\n');
+            let inList = false;
+            let result = [];
+            for (let line of lines) {
+                const listMatch = line.match(/^(\s*)[-*]\s+(.*)$/);
+                if (listMatch) {
+                    if (!inList) { result.push('<ul>'); inList = true; }
+                    result.push(`<li>${listMatch[2]}</li>`);
+                } else {
+                    if (inList) { result.push('</ul>'); inList = false; }
+                    const trimmed = line.trim();
+                    if (trimmed.length > 0 && !trimmed.startsWith('<h') && !trimmed.startsWith('<pre')) {
+                        result.push(`<p>${trimmed}</p>`);
+                    } else if (trimmed.length > 0) {
+                        result.push(trimmed);
+                    }
+                }
+            }
+            if (inList) result.push('</ul>');
+            return result.join('\n');
+        }
+
+        async function loadDynamicRelease() {
+            const section = document.getElementById('latest-release-section');
+            if (!section) return;
+            const repo = section.dataset.githubRepo;
+            if (!repo) return;
+
+            try {
+                let res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`, {
+                    headers: { 'Accept': 'application/vnd.github+json' }
+                });
+                let release;
+                if (res.ok) {
+                    release = await res.json();
+                } else {
+                    const listRes = await fetch(`https://api.github.com/repos/${repo}/releases`, {
+                        headers: { 'Accept': 'application/vnd.github+json' }
+                    });
+                    if (listRes.ok) {
+                        const list = await listRes.json();
+                        if (list && list.length > 0) release = list[0];
+                    }
+                }
+
+                if (!release) return;
+
+                const tagEl = document.getElementById('release-tag');
+                const nameEl = document.getElementById('release-name');
+                const dateEl = document.getElementById('release-date');
+                const urlEl = document.getElementById('release-url');
+                const bodyEl = document.getElementById('release-body');
+                const actionBtn = document.getElementById('header-release-btn');
+
+                if (tagEl && release.tag_name) tagEl.textContent = release.tag_name;
+                if (nameEl && release.name) nameEl.textContent = release.name;
+                if (dateEl && release.published_at) {
+                    const d = new Date(release.published_at);
+                    const dateStr = d.toISOString().split('T')[0];
+                    const isEs = (localStorage.getItem('portfolio_lang') || 'en') === 'es';
+                    dateEl.textContent = (isEs ? 'Publicado: ' : 'Released: ') + dateStr;
+                }
+                if (urlEl && release.html_url) {
+                    urlEl.href = release.html_url;
+                }
+                if (actionBtn && release.html_url) {
+                    actionBtn.href = release.html_url;
+                    if (release.tag_name) {
+                        actionBtn.textContent = `Release ${release.tag_name}`;
+                    }
+                }
+                if (bodyEl && release.body && release.body.trim()) {
+                    bodyEl.innerHTML = renderMarkdown(release.body);
+                }
+            } catch (e) {
+                // Preserves pre-rendered static changelog on rate-limit / offline
+            }
+        }
+
+        initI18n();
+        loadDynamicRelease();
     </script>
 </body>
 </html>
