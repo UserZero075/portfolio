@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebConsole - Marlon Sarduy Machado</title>
-    <meta name="description" content="Tailscale-only web terminal with real PTY, xterm.js, binary/zlib low-bandwidth transport and local input buffering for instant typing on weak mobile links.">
+    <meta name="description" content="Private web workspace for Tailscale: manage projects, Git branches & isolated worktrees, code/markdown editor, and persistent AI coding agents in tmux.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="WebConsole - Marlon Sarduy Machado">
-    <meta property="og:description" content="Tailscale-only web terminal with real PTY, xterm.js, binary/zlib low-bandwidth transport and local input buffering for instant typing on weak mobile links.">
+    <meta property="og:description" content="Private web workspace for Tailscale: manage projects, Git branches & isolated worktrees, code/markdown editor, and persistent AI coding agents in tmux.">
     <meta property="og:url" content="https://userzero075.github.io/portfolio/p/webconsole.html">
     <meta property="og:image" content="https://userzero075.github.io/portfolio/webconsole-preview.svg">
     <meta property="og:site_name" content="Marlon Sarduy Machado - Portfolio">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="WebConsole - Marlon Sarduy Machado">
-    <meta name="twitter:description" content="Tailscale-only web terminal with real PTY, xterm.js, binary/zlib low-bandwidth transport and local input buffering for instant typing on weak mobile links.">
+    <meta name="twitter:description" content="Private web workspace for Tailscale: manage projects, Git branches & isolated worktrees, code/markdown editor, and persistent AI coding agents in tmux.">
     <meta name="twitter:image" content="https://userzero075.github.io/portfolio/webconsole-preview.svg">
     <style>
         :root {
-            --bg: #0d1117;
-            --card: #161b22;
-            --accent: #3fb950;
-            --accent2: #58a6ff;
-            --text: #e6edf3;
-            --muted: #8b949e;
+            --bg: #090a0d;
+            --card: #111214;
+            --accent: #8acfb3;
+            --accent2: #9dbde0;
+            --text: #e5e6e2;
+            --muted: #999b9d;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; }
@@ -40,16 +40,20 @@
         .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 1.1rem; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease; border: 1px solid transparent; }
         .btn-github { background: rgba(255,255,255,0.08); color: var(--text); border-color: rgba(255,255,255,0.12); }
         .btn-github:hover { background: rgba(255,255,255,0.14); transform: translateY(-1px); }
-        .btn-page { background: var(--accent); color: #fff; }
+        .btn-page { background: var(--accent); color: #13231b; font-weight: 600; }
         .btn-page:hover { filter: brightness(1.15); transform: translateY(-1px); }
         .btn-details { background: transparent; color: var(--muted); border-color: rgba(255,255,255,0.15); }
         .btn-details:hover { color: var(--text); border-color: var(--accent); transform: translateY(-1px); }
         .section { margin: 2rem 0; padding: 1.5rem; background: var(--card); border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
         .section h2 { color: var(--accent2); font-size: 1.1rem; margin-bottom: 0.75rem; font-weight: 600; }
-        .section p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
+        .section p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .section ul { list-style: none; margin: 0; padding: 0; }
+        .section li { color: var(--muted); line-height: 1.7; font-size: 0.92rem; padding: 0.35rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .section li:last-child { border-bottom: none; }
+        .section li strong { color: var(--text); }
         .lang-switch { position: fixed; top: 1rem; right: 1rem; z-index: 10; display: flex; gap: 0.4rem; }
         .lang-btn { background: rgba(255,255,255,0.08); color: var(--muted); border: 1px solid rgba(255,255,255,0.12); padding: 0.35rem 0.7rem; cursor: pointer; border-radius: 6px; font-size: 0.8rem; font-weight: 500; transition: all 0.2s; }
-        .lang-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .lang-btn.active { background: var(--accent); color: #13231b; font-weight: 600; border-color: var(--accent); }
         .lang-btn:hover:not(.active) { color: var(--text); border-color: var(--accent2); }
         .footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; color: var(--muted); font-size: 0.8rem; }
         @media (max-width: 600px) {
@@ -60,20 +64,37 @@
     </style>
 </head>
 <body>
-    <div class="lang-switch"><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="es">ES</button></div>
+    <div class="lang-switch"><button class="lang-btn" data-lang=\"en\">EN</button><button class="lang-btn" data-lang=\"es\">ES</button></div>
     <div class="container">
-        <a href="../index.html" class="back-link" data-i18n="backToPortfolio">← Back to Portfolio</a>
+        <a href="../index.html#projects" class="back-link" data-i18n="backToPortfolio">← Back to Portfolio</a>
         <div class="hero">
             <img src="../webconsole-preview.svg" alt="WebConsole preview">
             <div class="hero-info">
                 <h1>WebConsole</h1>
-                <p data-i18n="desc">Tailscale-only web terminal with real PTY, xterm.js, binary/zlib low-bandwidth transport and local input buffering for instant typing on weak mobile links.</p>
+                <p data-i18n="desc">Private web workspace for Tailscale: manage projects, Git branches & isolated worktrees, code/markdown editor, and persistent AI coding agents in tmux with inter-agent MCP communication.</p>
             </div>
         </div>
         <div class="actions">
             <a href="https://github.com/UserZero075/webconsole" target="_blank" class="btn btn-github">GitHub</a>
-            <a href="https://github.com/UserZero075/webconsole/releases/tag/v1.0.0" target="_blank" class="btn btn-page">Release</a>
-            <a href="../index.html#webconsole" class="btn btn-details">← Portfolio</a>
+            <a href="https://github.com/UserZero075/webconsole/releases/tag/v1.0.0" target="_blank" class="btn btn-page">Release v1.0.0</a>
+            <a href="../index.html#projects" class="btn btn-details">← Portfolio</a>
+        </div>
+
+        <div class="section">
+            <h2 data-i18n="aboutTitle">About this project</h2>
+            <p data-i18n="aboutText1">WebConsole is an autonomous, private server workbench accessible directly over Tailscale. It eliminates the fragility of running AI coding agents (OpenCode, Codex, Hermes) in remote terminals by isolating each process inside dedicated, unkillable tmux sessions.</p>
+            <p data-i18n="aboutText2">It integrates a complete project lifecycle: folder registration, GitHub repository cloning via GitHub CLI, isolated Git worktree management, an embedded CodeMirror editor, and a local Model Context Protocol (MCP) server for inter-agent communication.</p>
+        </div>
+
+        <div class="section">
+            <h2 data-i18n="featuresTitle">Technical Highlights</h2>
+            <ul>
+                <li><strong data-i18n="f1Title">Persistent Process Architecture:</strong> <span data-i18n="f1Desc">Agents run in dedicated tmux sessions with systemd KillMode=process. Closing browser tabs, sleep, or network disconnects never kill running tasks.</span></li>
+                <li><strong data-i18n="f2Title">Isolated Git Worktrees:</strong> <span data-i18n="f2Desc">Spawn dedicated worktrees for concurrent agent branches without disturbing the primary working copy.</span></li>
+                <li><strong data-i18n="f3Title">Local MCP Inter-Agent Comms:</strong> <span data-i18n="f3Desc">Embedded WebConsole MCP server allows multiple agents within the same project to discover peers and exchange messages.</span></li>
+                <li><strong data-i18n="f4Title">Integrated Code &amp; Markdown Editor:</strong> <span data-i18n="f4Desc">Built-in CodeMirror 6 editor with syntax highlighting, Markdown live split-preview, and read-only Git diff viewer.</span></li>
+                <li><strong data-i18n="f5Title">Zero-Friction Tailscale Serve:</strong> <span data-i18n="f5Desc">Accessible from any browser (desktop, tablet, mobile) with touch gestures and visual viewport keyboard handling, zero third-party dependencies.</span></li>
+            </ul>
         </div>
     </div>
     <div class="footer">Marlon Sarduy Machado · UserZero075</div>
@@ -81,13 +102,39 @@
         const translations = {
             en: {
                 backToPortfolio: "← Back to Portfolio",
-                aboutProject: "About this project",
-                desc: "Tailscale-only web terminal with real PTY, xterm.js, binary/zlib low-bandwidth transport and local input buffering for instant typing on weak mobile links."
+                desc: "Private web workspace for Tailscale: manage projects, Git branches & isolated worktrees, code/markdown editor, and persistent AI coding agents in tmux with inter-agent MCP communication.",
+                aboutTitle: "About this project",
+                aboutText1: "WebConsole is an autonomous, private server workbench accessible directly over Tailscale. It eliminates the fragility of running AI coding agents (OpenCode, Codex, Hermes) in remote terminals by isolating each process inside dedicated, unkillable tmux sessions.",
+                aboutText2: "It integrates a complete project lifecycle: folder registration, GitHub repository cloning via GitHub CLI, isolated Git worktree management, an embedded CodeMirror editor, and a local Model Context Protocol (MCP) server for inter-agent communication.",
+                featuresTitle: "Technical Highlights",
+                f1Title: "Persistent Process Architecture:",
+                f1Desc: "Agents run in dedicated tmux sessions with systemd KillMode=process. Closing browser tabs, sleep, or network disconnects never kill running tasks.",
+                f2Title: "Isolated Git Worktrees:",
+                f2Desc: "Spawn dedicated worktrees for concurrent agent branches without disturbing the primary working copy.",
+                f3Title: "Local MCP Inter-Agent Comms:",
+                f3Desc: "Embedded WebConsole MCP server allows multiple agents within the same project to discover peers and exchange messages.",
+                f4Title: "Integrated Code & Markdown Editor:",
+                f4Desc: "Built-in CodeMirror 6 editor with syntax highlighting, Markdown live split-preview, and read-only Git diff viewer.",
+                f5Title: "Zero-Friction Tailscale Serve:",
+                f5Desc: "Accessible from any browser (desktop, tablet, mobile) with touch gestures and visual viewport keyboard handling, zero third-party dependencies."
             },
             es: {
                 backToPortfolio: "← Volver al Portfolio",
-                aboutProject: "Sobre este proyecto",
-                desc: "Terminal web solo para Tailscale con PTY real, xterm.js, transporte binario/zlib de bajo ancho de banda y buffer de entrada local para escritura instantánea en enlaces móviles débiles."
+                desc: "Workspace web privado para Tailscale: gestión de proyectos, ramas y worktrees Git aislados, editor de código y agentes AI persistentes en sesiones tmux con comunicación inter-agente MCP.",
+                aboutTitle: "Sobre este proyecto",
+                aboutText1: "WebConsole es un espacio de trabajo privado en servidor accesible directamente a través de Tailscale. Elimina la fragilidad de ejecutar agentes de código (OpenCode, Codex, Hermes) en terminales remotas aislando cada proceso en sesiones tmux persistentes.",
+                aboutText2: "Integra el ciclo completo de proyectos: registro de carpetas, clonado desde GitHub mediante GitHub CLI, gestión de worktrees Git aislados, editor CodeMirror integrado y un servidor local MCP para comunicación entre agentes.",
+                featuresTitle: "Aspectos Técnicos Destacados",
+                f1Title: "Arquitectura de Procesos Persistentes:",
+                f1Desc: "Los agentes corren en sesiones tmux con KillMode=process en systemd. Cerrar pestañas, suspender el portátil o caídas de red no interrumpen las tareas.",
+                f2Title: "Worktrees Git Aislados:",
+                f2Desc: "Crea worktrees independientes para ramas de agentes en paralelo sin alterar el checkout principal del proyecto.",
+                f3Title: "Servidor MCP Local Inter-Agente:",
+                f3Desc: "Servidor MCP integrado que permite a múltiples agentes en un mismo proyecto descubrirse e intercambiar mensajes directos.",
+                f4Title: "Editor de Código y Markdown Integrado:",
+                f4Desc: "Editor CodeMirror 6 con resaltado de sintaxis, vista previa dividida en Markdown y comparativa visual de diffs de Git.",
+                f5Title: "Acceso Nativo Tailscale Serve:",
+                f5Desc: "Usable desde cualquier navegador (escritorio, tablet, móvil) con soporte táctil y adaptación de viewport al teclado virtual, sin dependencias externas."
             }
         };
         function initI18n() {

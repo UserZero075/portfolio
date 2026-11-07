@@ -1,43 +1,229 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">WebConsole preview</title>
-  <desc id="desc">Dark web terminal dashboard preview with low-bandwidth local input mode.</desc>
+  <title id="title">WebConsole Preview</title>
+  <desc id="desc">Tailscale-native web workspace for Git projects, worktrees, and persistent AI coding agents in tmux.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0d1117"/>
-      <stop offset="1" stop-color="#1a1a2e"/>
+      <stop offset="0%" stop-color="#090a0d"/>
+      <stop offset="100%" stop-color="#12151b"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#58a6ff"/>
-      <stop offset="1" stop-color="#89ddff"/>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8acfb3"/>
+      <stop offset="100%" stop-color="#6ee7b7"/>
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#000" flood-opacity=".35"/>
+    <filter id="winShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.6"/>
     </filter>
   </defs>
+
+  <!-- Canvas Background -->
   <rect width="960" height="540" fill="url(#bg)"/>
-  <circle cx="795" cy="95" r="160" fill="#58a6ff" opacity=".12"/>
-  <circle cx="140" cy="470" r="210" fill="#c792ea" opacity=".10"/>
-  <g filter="url(#shadow)">
-    <rect x="86" y="74" width="788" height="392" rx="24" fill="#161b22" stroke="#30363d"/>
-    <rect x="86" y="74" width="788" height="56" rx="24" fill="#0d1117"/>
-    <path d="M86 106h788v24H86z" fill="#0d1117"/>
-    <circle cx="126" cy="102" r="8" fill="#ff5370"/>
-    <circle cx="154" cy="102" r="8" fill="#ffcb6b"/>
-    <circle cx="182" cy="102" r="8" fill="#c3e88d"/>
-    <rect x="682" y="91" width="74" height="24" rx="12" fill="#12324a" stroke="#58a6ff"/>
-    <text x="719" y="108" text-anchor="middle" fill="#89ddff" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">LOCAL</text>
-    <rect x="770" y="91" width="62" height="24" rx="12" fill="#193321" stroke="#3fb950"/>
-    <text x="801" y="108" text-anchor="middle" fill="#c3e88d" font-family="Inter, sans-serif" font-size="12" font-weight="700">LIVE</text>
-    <rect x="118" y="158" width="724" height="270" rx="16" fill="#1a1a2e" stroke="#30363d"/>
-    <text x="146" y="198" fill="#89ddff" font-family="JetBrains Mono, monospace" font-size="20" font-weight="700">WebConsole</text>
-    <text x="146" y="236" fill="#c3e88d" font-family="JetBrains Mono, monospace" font-size="16">nanoclaw@devfast:~$</text>
-    <text x="360" y="236" fill="#eee" font-family="JetBrains Mono, monospace" font-size="16">opencode run</text>
-    <rect x="468" y="220" width="10" height="22" fill="url(#accent)">
-      <animate attributeName="opacity" values="1;.15;1" dur="1.2s" repeatCount="indefinite"/>
-    </rect>
-    <text x="146" y="286" fill="#8b949e" font-family="JetBrains Mono, monospace" font-size="15">binary frames • zlib • 22 FPS batching</text>
-    <text x="146" y="326" fill="#8b949e" font-family="JetBrains Mono, monospace" font-size="15">local typing: instant • send on Enter</text>
-    <rect x="146" y="358" width="248" height="34" rx="17" fill="#0d1117" stroke="#30363d"/>
-    <text x="270" y="381" text-anchor="middle" fill="#58a6ff" font-family="Inter, sans-serif" font-size="14" font-weight="700">Tailscale-only terminal</text>
+  <circle cx="850" cy="80" r="160" fill="#8acfb3" opacity="0.06"/>
+  <circle cx="120" cy="460" r="190" fill="#3b82f6" opacity="0.05"/>
+
+  <!-- Main Application Window -->
+  <g filter="url(#winShadow)">
+    <rect x="25" y="20" width="910" height="500" rx="12" fill="#111214" stroke="#2c2e32" stroke-width="1.2"/>
+
+    <!-- Window Topbar -->
+    <path d="M 25 32 Q 25 20 37 20 L 923 20 Q 935 20 935 32 L 935 62 L 25 62 Z" fill="#17181a"/>
+    <line x1="25" y1="62" x2="935" y2="62" stroke="#2c2e32" stroke-width="1"/>
+
+    <!-- Window Controls -->
+    <circle cx="48" cy="41" r="5.5" fill="#ff5f56"/>
+    <circle cx="67" cy="41" r="5.5" fill="#ffbd2e"/>
+    <circle cx="86" cy="41" r="5.5" fill="#27c93f"/>
+
+    <!-- Titlebar center title -->
+    <text x="480" y="45" text-anchor="middle" fill="#999b9d" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500">
+      WebConsole · Workspace · <tspan fill="#e5e6e2">tailscale@srv-cloud</tspan>
+    </text>
+
+    <!-- Titlebar status badges (right) -->
+    <rect x="715" y="30" width="102" height="22" rx="11" fill="#12241b" stroke="#8acfb3" stroke-width="0.8"/>
+    <circle cx="727" cy="41" r="3.5" fill="#34d399"/>
+    <text x="736" y="45" fill="#8acfb3" font-family="JetBrains Mono, monospace" font-size="10.5" font-weight="700">TMUX LIVE</text>
+
+    <rect x="825" y="30" width="95" height="22" rx="11" fill="#15202e" stroke="#3b82f6" stroke-width="0.8"/>
+    <text x="872" y="45" text-anchor="middle" fill="#93c5fd" font-family="Inter, system-ui, sans-serif" font-size="10.5" font-weight="600">Tailscale 🔒</text>
+
+    <!-- ==================== LEFT SIDEBAR: PROJECTS & AGENTS ==================== -->
+    <g transform="translate(25, 62)">
+      <rect width="230" height="458" fill="#17181a"/>
+      <line x1="230" y1="0" x2="230" y2="458" stroke="#2c2e32" stroke-width="1"/>
+
+      <!-- Sidebar Header -->
+      <text x="16" y="24" fill="#999b9d" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="0.05em">PROYECTOS</text>
+      <text x="175" y="24" fill="#686b6e" font-family="JetBrains Mono, monospace" font-size="12">＋  ↻  ▤</text>
+
+      <!-- Search Input -->
+      <rect x="12" y="34" width="206" height="26" rx="5" fill="#121315" stroke="#2a2c30" stroke-width="1"/>
+      <text x="22" y="51" fill="#686b6e" font-family="Inter, system-ui, sans-serif" font-size="11">⌕ Buscar proyecto o agente…</text>
+
+      <!-- Tree Items -->
+      <!-- Item 1: Active Project -->
+      <g transform="translate(12, 72)">
+        <rect x="0" y="0" width="206" height="26" rx="5" fill="rgba(138,207,179,0.08)"/>
+        <text x="8" y="17" fill="#8acfb3" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="650">▾ 📁 devfast-platform</text>
+        <rect x="156" y="5" width="42" height="16" rx="3" fill="#202523" stroke="#8acfb3" stroke-width="0.6"/>
+        <text x="177" y="16" text-anchor="middle" fill="#8acfb3" font-family="JetBrains Mono, monospace" font-size="9.5">main</text>
+      </g>
+
+      <!-- Worktree node -->
+      <g transform="translate(24, 102)">
+        <text x="6" y="14" fill="#9dbde0" font-family="JetBrains Mono, monospace" font-size="11">▾ 🌿 worktree: feat-ai</text>
+      </g>
+
+      <!-- Agent 1: OpenCode (Running) -->
+      <g transform="translate(36, 122)">
+        <rect x="0" y="0" width="182" height="24" rx="4" fill="rgba(52,211,153,0.12)" stroke="#8acfb3" stroke-width="0.8"/>
+        <circle cx="10" cy="12" r="3" fill="#34d399"/>
+        <text x="18" y="16" fill="#e5e6e2" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600">OpenCode</text>
+        <text x="85" y="15" fill="#34d399" font-family="JetBrains Mono, monospace" font-size="9.5">RUNNING</text>
+      </g>
+
+      <!-- Agent 2: Codex CLI (Attention needed) -->
+      <g transform="translate(36, 150)">
+        <rect x="0" y="0" width="182" height="24" rx="4" fill="rgba(216,184,115,0.08)"/>
+        <circle cx="10" cy="12" r="3" fill="#d8b873"/>
+        <text x="18" y="16" fill="#d3d4d1" font-family="Inter, system-ui, sans-serif" font-size="11">Codex CLI</text>
+        <text x="85" y="15" fill="#d8b873" font-family="JetBrains Mono, monospace" font-size="9.5">PERM ?</text>
+      </g>
+
+      <!-- Shell node -->
+      <g transform="translate(36, 178)">
+        <text x="8" y="15" fill="#999b9d" font-family="JetBrains Mono, monospace" font-size="11">💻 Shell Bash</text>
+      </g>
+
+      <!-- Item 2: Second Project -->
+      <g transform="translate(12, 204)">
+        <text x="8" y="17" fill="#c5c7c4" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">▸ 📁 OnikuPlus</text>
+        <text x="168" y="17" fill="#686b6e" font-family="JetBrains Mono, monospace" font-size="9.5">master</text>
+      </g>
+      <!-- Item 3: Third Project -->
+      <g transform="translate(12, 230)">
+        <text x="8" y="17" fill="#c5c7c4" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">▸ 📁 tripadvisor-scraper</text>
+      </g>
+
+      <!-- Sidebar Bottom Bar -->
+      <line x1="0" y1="418" x2="230" y2="418" stroke="#2c2e32" stroke-width="1"/>
+      <g transform="translate(16, 428)">
+        <text x="0" y="15" fill="#999b9d" font-family="Inter, system-ui, sans-serif" font-size="11.5">⚙ Personalizar workspace</text>
+      </g>
+    </g>
+
+    <!-- ==================== CENTER WORKSPACE AREA ==================== -->
+    <g transform="translate(255, 62)">
+      <!-- Tab Strip -->
+      <rect width="680" height="34" fill="#141517"/>
+      <line x1="0" y1="34" x2="680" y2="34" stroke="#2c2e32" stroke-width="1"/>
+
+      <!-- Active Tab: OpenCode Agent -->
+      <g transform="translate(8, 5)">
+        <path d="M 0 4 Q 0 0 4 0 L 196 0 Q 200 0 200 4 L 200 29 L 0 29 Z" fill="#0b0b0d"/>
+        <line x1="0" y1="0" x2="200" y2="0" stroke="#8acfb3" stroke-width="2"/>
+        <circle cx="14" cy="14" r="3" fill="#34d399"/>
+        <text x="23" y="18" fill="#e5e6e2" font-family="Inter, system-ui, sans-serif" font-size="11.5" font-weight="600">OpenCode · feat-ai</text>
+        <text x="186" y="17" fill="#686b6e" font-family="Inter, system-ui, sans-serif" font-size="11">×</text>
+      </g>
+
+      <!-- Inactive Tab: Workspace Shell -->
+      <g transform="translate(212, 5)">
+        <text x="14" y="18" fill="#8b949e" font-family="Inter, system-ui, sans-serif" font-size="11.5">💻 bash: devfast</text>
+      </g>
+
+      <!-- Inactive Tab: Markdown/Code Editor -->
+      <g transform="translate(325, 5)">
+        <text x="14" y="18" fill="#8b949e" font-family="Inter, system-ui, sans-serif" font-size="11.5">📄 README.md</text>
+      </g>
+
+      <!-- Inactive Tab: Config -->
+      <g transform="translate(435, 5)">
+        <text x="14" y="18" fill="#8b949e" font-family="Inter, system-ui, sans-serif" font-size="11.5">📝 orchestrator.ts</text>
+      </g>
+
+      <!-- ==================== AGENT TERMINAL (xterm.js in tmux) ==================== -->
+      <rect x="0" y="34" width="680" height="290" fill="#0b0b0d"/>
+
+      <!-- Terminal Session Header Banner -->
+      <g transform="translate(18, 54)">
+        <text x="0" y="0" fill="#686b6e" font-family="JetBrains Mono, monospace" font-size="11">
+          tmux: <tspan fill="#8acfb3">devfast-opencode</tspan> [PID 89420] · scrollback: 3000L · mcp: <tspan fill="#34d399">connected</tspan>
+        </text>
+      </g>
+
+      <!-- Terminal Body Content -->
+      <g transform="translate(18, 78)" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11.5">
+        <!-- Line 1: Shell prompt -->
+        <text x="0" y="0">
+          <tspan fill="#34d399">cloud@vps</tspan><tspan fill="#686b6e">:</tspan><tspan fill="#9dbde0">~/worktrees/feat-ai</tspan><tspan fill="#e5e6e2">$ opencode run --agent code-reviewer</tspan>
+        </text>
+
+        <!-- Line 2: Startup banner -->
+        <text x="0" y="22" fill="#8acfb3">
+          ● OpenCode V2 · Workspace session persistent (tmux managed)
+        </text>
+
+        <!-- Line 3: MCP Status -->
+        <text x="0" y="42" fill="#9dbde0">
+          → Local MCP Bridge: 3 peer agents discovered in project [devfast-platform]
+        </text>
+
+        <!-- Line 4: Tree context -->
+        <text x="0" y="62" fill="#999b9d">
+          ✓ Git worktree verified: branch 'feat/ai-agent' (clean checkout)
+        </text>
+
+        <!-- Line 5: Agent execution -->
+        <text x="0" y="86" fill="#e5e6e2">
+          [OpenCode] Indexing repository AST and inspecting orchestrator pipelines…
+        </text>
+        <text x="0" y="106" fill="#a7f3d0">
+          ✓ Scanned 38 modules · Generated 2 non-destructive patch proposals
+        </text>
+
+        <!-- Line 6: Inter-agent comms -->
+        <text x="0" y="130" fill="#d8b873">
+          [MCP &lt; Codex] Peer agent notification: "Integration tests ready on :3000"
+        </text>
+
+        <!-- Line 7: Attention required prompt -->
+        <text x="0" y="154" fill="#ffbd2e">
+          [Approval Required] Apply patch to src/core/orchestrator.ts? [Y/n]
+        </text>
+
+        <!-- Active cursor -->
+        <rect x="532" y="142" width="8" height="15" fill="#8acfb3">
+          <animate attributeName="opacity" values="1;0.1;1" dur="1s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+
+      <!-- ==================== BOTTOM DRAWER: INDEPENDENT SHELL ==================== -->
+      <g transform="translate(0, 324)">
+        <rect width="680" height="134" fill="#14161a"/>
+        <line x1="0" y1="0" x2="680" y2="0" stroke="#2c2e32" stroke-width="1.2"/>
+
+        <!-- Drawer Tab Bar -->
+        <rect width="680" height="25" fill="#191b20"/>
+        <text x="16" y="17" fill="#8acfb3" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="650">
+          💻 Terminal de Workspace (Shell Bash independiente)
+        </text>
+        <rect x="365" y="5" width="138" height="16" rx="3" fill="#20242b"/>
+        <text x="434" y="16" text-anchor="middle" fill="#9dbde0" font-family="JetBrains Mono, monospace" font-size="9.5">
+          git: (feat/ai-agent) ✔
+        </text>
+
+        <!-- Drawer Shell Output -->
+        <g transform="translate(18, 46)" font-family="JetBrains Mono, ui-monospace, monospace" font-size="11">
+          <text x="0" y="0">
+            <tspan fill="#34d399">cloud@vps</tspan><tspan fill="#686b6e">:</tspan><tspan fill="#9dbde0">~/worktrees/feat-ai</tspan><tspan fill="#e5e6e2">$ git status --short</tspan>
+          </text>
+          <text x="0" y="18" fill="#34d399">M  src/core/orchestrator.ts</text>
+          <text x="0" y="34" fill="#60a5fa">?? tests/agent-bridge.test.ts</text>
+          <text x="0" y="54">
+            <tspan fill="#34d399">cloud@vps</tspan><tspan fill="#686b6e">:</tspan><tspan fill="#9dbde0">~/worktrees/feat-ai</tspan><tspan fill="#e5e6e2">$ _</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
   </g>
 </svg>
